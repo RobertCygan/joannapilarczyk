@@ -1,0 +1,46 @@
+---
+/*
+ * Sekcja opinii. Domyślnie wyłączona (FEATURES.showTestimonials = false).
+ * Opinie dodawaj w plikach src/i18n/*.ts dopiero po uzyskaniu zgody autorów,
+ * w brzmieniu zatwierdzonym przez nich, bez danych pozwalających ich zidentyfikować.
+ */
+import { FEATURES } from '../config';
+import type { Content } from '../i18n';
+
+interface Props {
+  t: Content;
+}
+
+const { t } = Astro.props;
+const s = t.testimonials;
+const visible = FEATURES.showTestimonials && s.items.length > 0;
+---
+
+{
+  visible && (
+    <section id="testimonials" class="section border-t border-line bg-white" aria-labelledby="testimonials-heading">
+      <div class="container-site">
+        <div class="max-w-2xl">
+          <p class="eyebrow" data-reveal>{s.eyebrow}</p>
+          <h2 id="testimonials-heading" class="h-section mt-5" data-reveal>
+            {s.heading}
+          </h2>
+          <p class="mt-4 text-[0.9rem] text-muted" data-reveal>
+            {s.intro}
+          </p>
+        </div>
+        <ul class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {s.items.map((item) => (
+            <li class="card flex flex-col p-8" data-reveal>
+              <span class="font-serif text-5xl leading-none text-mint" aria-hidden="true">
+                „
+              </span>
+              <blockquote class="mt-2 flex-1 font-serif text-[1.35rem] leading-snug text-forest">{item.quote}</blockquote>
+              <p class="mt-6 text-[0.85rem] font-semibold tracking-[0.08em] text-sage-ink uppercase">{item.author}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
+}

@@ -1,0 +1,121 @@
+---
+import { FEATURES } from '../config';
+import { ROUTES, type Content, type PageKey } from '../i18n';
+import Icon from './Icon.astro';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import Logo from './Logo.astro';
+
+interface Props {
+  t: Content;
+  page: PageKey;
+}
+
+const { t, page } = Astro.props;
+const home = ROUTES.home[t.lang];
+// Na podstronach linki prowadzą do sekcji strony głównej.
+const base = page === 'home' ? '' : home;
+
+const links = [
+  { id: 'top', label: t.nav.home },
+  { id: 'about', label: t.nav.about },
+  { id: 'services', label: t.nav.services },
+  { id: 'process', label: t.nav.process },
+  ...(FEATURES.showTestimonials && t.testimonials.items.length ? [{ id: 'testimonials', label: t.nav.testimonials }] : []),
+  { id: 'faq', label: t.nav.faq },
+  { id: 'contact', label: t.nav.contact },
+];
+---
+
+<header
+  id="site-header"
+  data-header
+  class="fixed inset-x-0 top-0 z-50 border-b border-transparent transition-[background-color,border-color,box-shadow] duration-500"
+>
+  <div class="container-site flex h-[4.75rem] items-center justify-between gap-6">
+    <Logo href={`${home}#top`} tagline={t.brandTagline} />
+
+    <nav aria-label={t.nav.mainNavLabel} class="hidden xl:block">
+      <ul class="flex items-center gap-7 text-[0.9rem] font-medium">
+        {
+          links.map((l) => (
+            <li>
+              <a
+                href={`${base}#${l.id}`}
+                data-nav-link={l.id}
+                class="relative py-2 text-graphite/80 transition-colors hover:text-forest after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-forest after:transition-transform after:duration-500 hover:after:scale-x-100 aria-[current=true]:text-forest aria-[current=true]:after:scale-x-100"
+              >
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <LanguageSwitcher lang={t.lang} page={page} label={t.nav.languageLabel} class="hidden sm:flex" />
+      <a href={`${base}#contact`} class="btn btn-primary hidden min-h-11 px-5 text-[0.88rem] md:inline-flex">
+        {t.nav.cta}
+      </a>
+      <button
+        type="button"
+        class="inline-flex h-11 w-11 items-center justify-center rounded-full text-forest transition-colors hover:bg-forest/[0.06] xl:hidden"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        data-menu-toggle
+        data-label-open={t.nav.openMenu}
+        data-label-close={t.nav.closeMenu}
+      >
+        <span class="sr-only" data-menu-label>{t.nav.openMenu}</span>
+        <Icon name="menu" class="menu-icon-open" />
+        <Icon name="close" class="menu-icon-close hidden" />
+      </button>
+    </div>
+  </div>
+
+  <div
+    id="mobile-menu"
+    data-mobile-menu
+    hidden
+    class="h-[calc(100dvh-4.75rem)] overflow-y-auto border-t border-line bg-ivory xl:hidden"
+  >
+    <nav aria-label={t.nav.mainNavLabel} class="container-site py-6">
+      <ul class="divide-y divide-line">
+        {
+          links.map((l) => (
+            <li>
+              <a
+                href={`${base}#${l.id}`}
+                class="flex items-center justify-between py-4 font-serif text-2xl text-forest"
+                data-menu-link
+              >
+                {l.label}
+                <Icon name="arrow" size={18} class="text-sage" />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <div class="mt-6 flex flex-wrap items-center justify-between gap-4">
+        <LanguageSwitcher lang={t.lang} page={page} label={t.nav.languageLabel} />
+        <a href={`${base}#contact`} class="btn btn-primary" data-menu-link>{t.nav.cta}</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<style>
+  [data-header].is-scrolled,
+  [data-header].is-open {
+    background-color: rgb(250 249 246 / 0.97);
+    border-color: var(--color-line);
+    backdrop-filter: saturate(140%) blur(12px);
+    -webkit-backdrop-filter: saturate(140%) blur(12px);
+  }
+  [data-header].is-open .menu-icon-open {
+    display: none;
+  }
+  [data-header].is-open .menu-icon-close {
+    display: block;
+  }
+</style>

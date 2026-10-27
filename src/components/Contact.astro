@@ -1,0 +1,214 @@
+---
+import { FEATURES, FORM, SITE } from '../config';
+import { ROUTES, type Content } from '../i18n';
+import Icon from './Icon.astro';
+
+interface Props {
+  t: Content;
+}
+
+const { t } = Astro.props;
+const c = t.contact;
+const f = c.form;
+const configured = Boolean(FORM.endpoint);
+
+const fieldClass =
+  'mt-2 block w-full rounded-xl border border-line bg-ivory px-4 py-3 text-[1rem] text-graphite placeholder:text-muted/70 transition-colors focus:border-forest focus:bg-white focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest aria-[invalid=true]:border-[#a1463b]';
+const labelClass = 'text-[0.88rem] font-semibold text-forest';
+const errorClass = 'field-error mt-1.5 hidden text-[0.85rem] text-[#a1463b]';
+---
+
+<section id="contact" class="section relative" aria-labelledby="contact-heading">
+  <div class="container-site grid gap-14 lg:grid-cols-12 lg:gap-16">
+    <div class="lg:col-span-5">
+      <p class="eyebrow" data-reveal>{c.eyebrow}</p>
+      <h2 id="contact-heading" class="h-section mt-5" data-reveal>{c.heading}</h2>
+      <p class="lead mt-6" data-reveal>{c.lead}</p>
+
+      <ul class="mt-10 space-y-5" data-reveal>
+        <li class="flex items-start gap-4">
+          <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-mint-50 text-forest"><Icon name="mail" size={20} /></span>
+          <div>
+            <p class="text-[0.85rem] text-muted">{c.emailLabel}</p>
+            <p><a href={`mailto:${SITE.email}`} class="link-underline font-semibold break-all text-forest">{SITE.email}</a></p>
+          </div>
+        </li>
+        {
+          FEATURES.showPhone && (
+            <li class="flex items-start gap-4">
+              <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-mint-50 text-forest">
+                <Icon name="phone" size={20} />
+              </span>
+              <div>
+                <p class="text-[0.85rem] text-muted">{c.phoneLabel}</p>
+                <p>
+                  <a href={`tel:${SITE.phone.href}`} class="link-underline font-semibold text-forest">
+                    {SITE.phone.display}
+                  </a>
+                </p>
+              </div>
+            </li>
+          )
+        }
+        <li class="flex items-start gap-4">
+          <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-mint-50 text-forest"><Icon name="globe" size={20} /></span>
+          <div>
+            <p class="text-[0.85rem] text-muted">{c.languagesLabel}</p>
+            <p class="font-semibold text-forest">{c.languagesValue}</p>
+          </div>
+        </li>
+        <li class="flex items-start gap-4">
+          <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-mint-50 text-forest"><Icon name="online" size={20} /></span>
+          <div>
+            <p class="text-[0.85rem] text-muted">{c.formatLabel}</p>
+            <p class="font-semibold text-forest">{c.formatValue}</p>
+          </div>
+        </li>
+      </ul>
+
+      <aside class="mt-10 rounded-2xl border border-[#e4d6c4] bg-sand/60 p-6 sm:p-7" aria-labelledby="crisis-heading" data-reveal>
+        <h3 id="crisis-heading" class="flex items-center gap-2.5 font-sans text-[0.95rem] font-bold text-forest">
+          <Icon name="alert" size={20} class="text-[#8a5a2b]" />
+          {c.crisis.title}
+        </h3>
+        <p class="mt-3 text-[0.93rem] leading-relaxed text-graphite">{c.crisis.text}</p>
+        <ul class="mt-4 space-y-2">
+          {
+            c.crisis.numbers.map((n) => (
+              <li class="flex items-baseline justify-between gap-4 border-b border-[#e4d6c4] pb-2 text-[0.9rem] last:border-0 last:pb-0">
+                <span class="text-graphite">{n.label}</span>
+                <a href={`tel:${n.tel}`} class="shrink-0 font-bold tracking-wide whitespace-nowrap text-forest underline-offset-4 hover:underline">
+                  {n.number}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="mt-4 text-[0.85rem] text-muted">{c.crisis.abroad}</p>
+      </aside>
+    </div>
+
+    <div class="lg:col-span-7" data-reveal>
+      <form
+        id="contact-form"
+        class="card p-6 shadow-soft sm:p-10"
+        method="post"
+        action={configured ? FORM.endpoint : undefined}
+        novalidate
+        data-contact-form
+        data-configured={configured ? 'true' : 'false'}
+        data-msg-required={f.required}
+        data-msg-email={f.invalidEmail}
+        data-msg-short={f.tooShort}
+        data-msg-consent={f.consentRequired}
+        data-msg-sending={f.sending}
+        data-msg-success={f.success}
+        data-msg-error={f.error}
+        data-msg-not-configured={f.notConfigured}
+        data-subject-prefix={`[${t.langName}] joannapilarczyk.no`}
+      >
+        {FORM.accessKey && <input type="hidden" name="access_key" value={FORM.accessKey} />}
+        <input type="hidden" name="_subject" value="" data-subject />
+        <input type="hidden" name="subject" value="" data-subject />
+        <input type="hidden" name="site_language" value={t.langName} />
+
+        <!-- Pułapka na boty: pola niewidoczne dla ludzi -->
+        <div class="absolute -left-[9999px] h-px w-px overflow-hidden" aria-hidden="true">
+          <label>
+            {f.honeypotLabel}
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+          </label>
+          <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <div class="grid gap-6 sm:grid-cols-2">
+          <div>
+            <label for="cf-name" class={labelClass}>{f.name}</label>
+            <input id="cf-name" name="name" type="text" required maxlength="80" autocomplete="given-name" class={fieldClass} aria-describedby="cf-name-error" />
+            <p id="cf-name-error" class={errorClass}></p>
+          </div>
+          <div>
+            <label for="cf-email" class={labelClass}>{f.email}</label>
+            <input id="cf-email" name="email" type="email" required maxlength="120" autocomplete="email" inputmode="email" class={fieldClass} aria-describedby="cf-email-error" />
+            <p id="cf-email-error" class={errorClass}></p>
+          </div>
+          <div>
+            <label for="cf-phone" class={labelClass}>
+              {f.phone} <span class="font-normal text-muted">({f.optional})</span>
+            </label>
+            <input id="cf-phone" name="phone" type="tel" maxlength="30" autocomplete="tel" class={fieldClass} />
+          </div>
+          <div>
+            <label for="cf-language" class={labelClass}>{f.language}</label>
+            <select id="cf-language" name="preferred_language" class={`${fieldClass} select`}>
+              {f.languages.map((l) => <option value={l}>{l}</option>)}
+            </select>
+          </div>
+          <div class="sm:col-span-2">
+            <label for="cf-topic" class={labelClass}>{f.topic}</label>
+            <select id="cf-topic" name="topic" required class={`${fieldClass} select`} aria-describedby="cf-topic-error">
+              <option value="">{f.topicPlaceholder}</option>
+              {f.topics.map((topic) => <option value={topic}>{topic}</option>)}
+            </select>
+            <p id="cf-topic-error" class={errorClass}></p>
+          </div>
+          <div class="sm:col-span-2">
+            <label for="cf-message" class={labelClass}>{f.message}</label>
+            <p id="cf-message-note" class="mt-1 flex gap-2 text-[0.85rem] leading-snug text-sage-ink">
+              <Icon name="shield" size={16} class="mt-0.5 shrink-0" />
+              {f.sensitiveNote}
+            </p>
+            <textarea
+              id="cf-message"
+              name="message"
+              required
+              minlength="15"
+              maxlength="2000"
+              rows="6"
+              placeholder={f.messagePlaceholder}
+              class={`${fieldClass} resize-y`}
+              aria-describedby="cf-message-note cf-message-error"></textarea>
+            <p id="cf-message-error" class={errorClass}></p>
+          </div>
+          <div class="sm:col-span-2">
+            <div class="flex items-start gap-3">
+              <input
+                id="cf-consent"
+                name="privacy_policy_read"
+                type="checkbox"
+                value="yes"
+                required
+                class="mt-1 h-5 w-5 shrink-0 cursor-pointer rounded border-line accent-forest"
+                aria-describedby="cf-consent-error"
+              />
+              <label for="cf-consent" class="text-[0.93rem] leading-snug text-graphite">
+                {f.consentBefore}<a href={ROUTES.privacy[t.lang]} class="link-underline text-forest" target="_blank" rel="noopener">{f.consentLink}</a>{f.consentAfter}
+              </label>
+            </div>
+            <p id="cf-consent-error" class={errorClass}></p>
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <button type="submit" class="btn btn-primary w-full sm:w-auto" data-submit>
+            <span data-submit-label>{f.submit}</span>
+            <Icon name="arrow" size={18} class="btn-arrow" />
+          </button>
+        </div>
+
+        <div data-form-status role="status" aria-live="polite" class="mt-6 hidden rounded-xl px-5 py-4 text-[0.95rem]"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  .select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2329483E' stroke-width='1.5' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.9rem center;
+    background-size: 1.1rem;
+    padding-right: 2.75rem;
+  }
+</style>

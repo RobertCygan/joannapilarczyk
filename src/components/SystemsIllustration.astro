@@ -1,0 +1,70 @@
+---
+interface Props {
+  label: string;
+  class?: string;
+}
+
+const { label, class: className = '' } = Astro.props;
+
+// Schemat systemu: osoba w centrum połączona z bliskimi; połączenia biegną też między nimi.
+const center = { x: 200, y: 200 };
+const nodes = [
+  { x: 200, y: 78, r: 13, fill: 'var(--color-sage)' },
+  { x: 314, y: 158, r: 10, fill: 'var(--color-mint)' },
+  { x: 276, y: 300, r: 14, fill: 'var(--color-sage)' },
+  { x: 120, y: 304, r: 10, fill: 'var(--color-mint)' },
+  { x: 84, y: 160, r: 12, fill: 'var(--color-sage)' },
+];
+
+const curve = (a: { x: number; y: number }, b: { x: number; y: number }, bend = 0.18) => {
+  const mx = (a.x + b.x) / 2;
+  const my = (a.y + b.y) / 2;
+  const dx = b.x - a.x;
+  const dy = b.y - a.y;
+  return `M${a.x} ${a.y} Q${mx - dy * bend} ${my + dx * bend} ${b.x} ${b.y}`;
+};
+---
+
+<svg viewBox="0 0 400 400" role="img" aria-label={label} class={className}>
+  <circle cx="200" cy="200" r="190" fill="var(--color-mint-50)"></circle>
+  <circle cx="200" cy="200" r="150" fill="none" stroke="var(--color-mint)" stroke-width="1" stroke-dasharray="2 6"></circle>
+  <circle cx="200" cy="200" r="78" fill="none" stroke="var(--color-mint)" stroke-width="1"></circle>
+
+  <g fill="none" stroke="var(--color-sage)" stroke-width="1.2" stroke-linecap="round">
+    {nodes.map((n) => <path d={curve(center, n, 0.08)} opacity="0.9" />)}
+    {nodes.map((n, i) => <path d={curve(n, nodes[(i + 1) % nodes.length], 0.22)} opacity="0.45" />)}
+  </g>
+
+  <g class="nodes">
+    {
+      nodes.map((n, i) => (
+        <g style={`--d: ${i * 0.9}s`}>
+          <circle cx={n.x} cy={n.y} r={n.r + 7} fill="var(--color-ivory)" class="halo" />
+          <circle cx={n.x} cy={n.y} r={n.r} fill={n.fill} />
+        </g>
+      ))
+    }
+  </g>
+
+  <circle cx={center.x} cy={center.y} r="30" fill="var(--color-ivory)"></circle>
+  <circle cx={center.x} cy={center.y} r="20" fill="var(--color-forest)"></circle>
+  <g fill="none" stroke-linecap="round" stroke-width="2.2" transform="translate(188 188) scale(0.5)">
+    <path d="M26.485 15.515A12 12 0 1 1 21.106 12.409" stroke="var(--color-ivory)"></path>
+    <path d="M21.515 32.485A12 12 0 1 1 26.894 35.591" stroke="var(--color-mint)"></path>
+  </g>
+</svg>
+
+<style>
+  .halo {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: breathe 6s ease-in-out infinite;
+    animation-delay: var(--d);
+  }
+  @keyframes breathe {
+    50% {
+      transform: scale(1.18);
+      opacity: 0.6;
+    }
+  }
+</style>

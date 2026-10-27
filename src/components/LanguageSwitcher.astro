@@ -1,0 +1,50 @@
+---
+import { LANGS, ROUTES, getContent, type Lang, type PageKey } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  page: PageKey;
+  label: string;
+  tone?: 'dark' | 'light';
+  class?: string;
+}
+
+const { lang, page, label, tone = 'dark', class: className = '' } = Astro.props;
+const light = tone === 'light';
+---
+
+<div role="group" aria-label={label} class:list={['flex items-center', className]}>
+  <ul class="flex items-center gap-1 text-[0.78rem] font-semibold tracking-[0.12em]">
+    {
+      LANGS.map((code) => {
+        const active = code === lang;
+        const target = getContent(code);
+        return (
+          <li>
+            <a
+              href={ROUTES[page][code]}
+              hreflang={target.htmlLang}
+              lang={target.htmlLang}
+              data-lang-link
+              aria-current={active ? 'true' : undefined}
+              title={target.langName}
+              class:list={[
+                'inline-flex min-h-9 min-w-9 items-center justify-center rounded-full px-2 uppercase transition-colors',
+                active
+                  ? light
+                    ? 'bg-ivory/15 text-ivory'
+                    : 'bg-forest/[0.08] text-forest'
+                  : light
+                    ? 'text-ivory/70 hover:text-ivory'
+                    : 'text-muted hover:text-forest',
+              ]}
+            >
+              <span class="sr-only">{target.langName}</span>
+              <span aria-hidden="true">{code}</span>
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</div>
