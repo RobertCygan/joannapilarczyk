@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../config';
+import { ROUTES, getContent, type Lang } from '../i18n';
+import About from './About.astro';
+import Approach from './Approach.astro';
+import Contact from './Contact.astro';
+import Emigration from './Emigration.astro';
+import Faq from './Faq.astro';
+import Hero from './Hero.astro';
+import Process from './Process.astro';
+import Services from './Services.astro';
+import Testimonials from './Testimonials.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const t = getContent(Astro.props.lang);
+const pageUrl = new URL(ROUTES.home[t.lang], SITE.url).href;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': `${SITE.url}/#person`,
+      name: 'Joanna Pilarczyk',
+      jobTitle: t.hero.role.split('|').map((s) => s.trim()),
+      email: `mailto:${SITE.email}`,
+      image: new URL('/og/portrait.jpg', SITE.url).href,
+      knowsLanguage: ['pl', 'en'],
+      alumniOf: { '@type': 'CollegeOrUniversity', name: 'Uniwersytet Szczeciński' },
+      worksFor: { '@id': `${SITE.url}/#practice` },
+    },
+    {
+      '@type': 'ProfessionalService',
+      '@id': `${SITE.url}/#practice`,
+      name: `Joanna Pilarczyk – ${t.footer.tagline}`,
+      url: pageUrl,
+      description: t.meta.description,
+      inLanguage: t.htmlLang,
+      email: SITE.email,
+      image: new URL('/og/portrait.jpg', SITE.url).href,
+      logo: new URL('/brand/symbol.svg', SITE.url).href,
+      founder: { '@id': `${SITE.url}/#person` },
+      availableLanguage: ['Polish', 'English'],
+      areaServed: [
+        { '@type': 'Country', name: 'Norway' },
+        { '@type': 'Country', name: 'Poland' },
+      ],
+      serviceType: t.services.items.map((s) => s.title),
+      foundingDate: String(SITE.foundingYear),
+    },
+  ],
+};
+---
+
+<BaseLayout t={t} page="home" title={t.meta.title} description={t.meta.description} jsonLd={jsonLd}>
+  <Hero t={t} />
+  <About t={t} />
+  <Services t={t} />
+  <Approach t={t} />
+  <Emigration t={t} />
+  <Process t={t} />
+  <Testimonials t={t} />
+  <Faq t={t} />
+  <Contact t={t} />
+</BaseLayout>

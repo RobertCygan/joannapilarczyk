@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { LANGS, ROUTES, getContent } from '../i18n';
+
+const t = getContent('pl');
+---
+
+<BaseLayout t={t} page="home" title={`${t.notFound.title} – Joanna Pilarczyk`} description={t.notFound.text} noindex>
+  <section class="container-site flex min-h-[70vh] flex-col justify-center pt-32 pb-20">
+    <p class="font-serif text-8xl text-sage-ink" aria-hidden="true">404</p>
+    <div class="mt-6 grid gap-10 sm:grid-cols-3">
+      {
+        LANGS.map((code) => {
+          const c = getContent(code);
+          return (
+            <div lang={c.htmlLang}>
+              <h1 class="text-3xl">{c.notFound.title}</h1>
+              <p class="mt-2 text-muted">{c.notFound.text}</p>
+              <a href={ROUTES.home[code]} class="link-underline mt-4 inline-block font-semibold text-forest">
+                {c.notFound.back}
+              </a>
+            </div>
+          );
+        })
+      }
+    </div>
+  </section>
+</BaseLayout>

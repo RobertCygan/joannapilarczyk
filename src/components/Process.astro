@@ -1,0 +1,58 @@
+---
+import type { Content } from '../i18n';
+import Icon from './Icon.astro';
+
+interface Props {
+  t: Content;
+}
+
+const { t } = Astro.props;
+const p = t.process;
+---
+
+<section id="process" class="section" aria-labelledby="process-heading">
+  <div class="container-site">
+    <div class="max-w-2xl">
+      <p class="eyebrow" data-reveal>{p.eyebrow}</p>
+      <h2 id="process-heading" class="h-section mt-5" data-reveal>{p.heading}</h2>
+      <p class="lead mt-5" data-reveal>{p.intro}</p>
+    </div>
+
+    <ol class="relative mt-16 grid gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+      {
+        p.steps.map((step, i) => (
+          <li class="relative" data-reveal style={`--reveal-delay: ${i * 90}ms`}>
+            {i < p.steps.length - 1 && (
+              <span class="absolute top-6 left-16 -right-4 hidden h-px bg-gradient-to-r from-sage/50 to-mint lg:block" aria-hidden="true" />
+            )}
+            <span class="relative flex h-12 w-12 items-center justify-center rounded-full border border-mint bg-ivory font-serif text-xl font-semibold text-forest">
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <h3 class="mt-6 text-[1.65rem] leading-tight">{step.title}</h3>
+            <p class="mt-3 text-[0.97rem] leading-relaxed text-muted">{step.text}</p>
+          </li>
+        ))
+      }
+    </ol>
+
+    <div class="mt-20 rounded-2xl border border-line bg-white p-7 sm:p-10" data-reveal>
+      <h3 class="font-sans text-[0.78rem] font-semibold tracking-[0.18em] text-sage-ink uppercase">{p.practicalTitle}</h3>
+      <ul class="mt-7 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          p.practical.map((item) => (
+            <li class="flex items-start gap-4">
+              <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-mint-50 text-forest">
+                <Icon name={item.icon} size={21} />
+              </span>
+              <div>
+                <p class="text-[0.85rem] text-muted">{item.label}</p>
+                <p class="font-serif text-[1.45rem] leading-tight text-forest">{item.value}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="mt-8 border-t border-line pt-6 text-[0.95rem] text-muted">{p.requirements}</p>
+    </div>
+  </div>
+</section>

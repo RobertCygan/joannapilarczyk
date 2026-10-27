@@ -1,0 +1,60 @@
+---
+import type { Content } from '../i18n';
+
+interface Props {
+  t: Content;
+}
+
+const { t } = Astro.props;
+const e = t.emigration;
+---
+
+<section id="abroad" class="section relative overflow-hidden bg-mint-50 pb-44 sm:pb-52 lg:pb-60" aria-labelledby="abroad-heading">
+  <!-- Linie gór i fiordu – dyskretne odniesienie do Norwegii -->
+  <svg
+    class="pointer-events-none absolute inset-x-0 bottom-0 h-40 w-full text-mint sm:h-56"
+    viewBox="0 0 1440 220"
+    preserveAspectRatio="none"
+    fill="none"
+    aria-hidden="true"
+  >
+    <path d="M0 170 L180 92 L300 140 L470 48 L640 150 L760 110 L900 160 L1080 70 L1250 140 L1440 96" stroke="currentColor" stroke-width="1.2"></path>
+    <path d="M0 196 L220 140 L380 178 L560 118 L720 186 L880 150 L1040 192 L1220 128 L1440 176" stroke="currentColor" stroke-width="1" opacity="0.7"></path>
+    <path d="M0 214 Q360 200 720 212 T1440 206" stroke="currentColor" stroke-width="1" opacity="0.5"></path>
+  </svg>
+
+  <div class="container-site relative grid gap-12 lg:grid-cols-12 lg:gap-16">
+    <div class="lg:col-span-6">
+      <p class="eyebrow" data-reveal>{e.eyebrow}</p>
+      <h2 id="abroad-heading" class="h-section mt-5" data-reveal>{e.heading}</h2>
+      <div class="mt-6 space-y-4">
+        {
+          e.paragraphs.map((p) => (
+            <p class="lead" data-reveal>
+              {p}
+            </p>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="lg:col-span-6 lg:pt-16">
+      <div class="rounded-2xl border border-mint bg-white/80 p-7 backdrop-blur-sm sm:p-9" data-reveal>
+        <h3 class="font-sans text-[0.78rem] font-semibold tracking-[0.18em] text-sage-ink uppercase">{e.listTitle}</h3>
+        <ul class="mt-6 space-y-3.5">
+          {
+            e.items.map((item) => (
+              <li class="flex gap-3.5 text-[1.02rem] text-graphite">
+                <span class="mt-[0.62em] h-px w-5 shrink-0 bg-sage" aria-hidden="true" />
+                <span>{item}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <p class="mt-8 border-l-2 border-sage pl-5 font-serif text-[1.45rem] leading-snug text-forest italic" data-reveal>
+        {e.note}
+      </p>
+    </div>
+  </div>
+</section>

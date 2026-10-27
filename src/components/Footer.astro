@@ -1,0 +1,90 @@
+---
+import { FEATURES, SITE } from '../config';
+import { ROUTES, type Content, type PageKey } from '../i18n';
+import Icon from './Icon.astro';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import Logo from './Logo.astro';
+
+interface Props {
+  t: Content;
+  page: PageKey;
+}
+
+const { t, page } = Astro.props;
+const home = ROUTES.home[t.lang];
+const year = new Date().getFullYear();
+
+const links = [
+  { id: 'about', label: t.nav.about },
+  { id: 'services', label: t.nav.services },
+  { id: 'process', label: t.nav.process },
+  { id: 'faq', label: t.nav.faq },
+  { id: 'contact', label: t.nav.contact },
+];
+---
+
+<footer class="bg-forest text-ivory/80">
+  <div class="container-site grid gap-12 py-16 md:grid-cols-12 lg:py-20">
+    <div class="md:col-span-5">
+      <Logo href={`${home}#top`} tagline={t.brandTagline} variant="light" />
+      <p class="mt-6 max-w-sm text-[0.95rem] leading-relaxed">{t.footer.tagline}</p>
+      <p class="mt-2 max-w-sm text-[0.95rem] leading-relaxed text-mint">{t.footer.online}</p>
+    </div>
+
+    <nav aria-label={t.footer.navTitle} class="md:col-span-3">
+      <h2 class="font-sans text-[0.72rem] font-semibold tracking-[0.2em] text-mint uppercase">{t.footer.navTitle}</h2>
+      <ul class="mt-5 space-y-2.5 text-[0.95rem]">
+        {
+          links.map((l) => (
+            <li>
+              <a href={`${home}#${l.id}`} class="transition-colors hover:text-ivory">
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+        <li>
+          <a href={ROUTES.privacy[t.lang]} class="transition-colors hover:text-ivory">{t.footer.privacy}</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="md:col-span-4">
+      <h2 class="font-sans text-[0.72rem] font-semibold tracking-[0.2em] text-mint uppercase">{t.footer.contactTitle}</h2>
+      <ul class="mt-5 space-y-3 text-[0.95rem]">
+        <li>
+          <a href={`mailto:${SITE.email}`} class="inline-flex items-center gap-3 break-all transition-colors hover:text-ivory">
+            <Icon name="mail" size={18} class="shrink-0 text-mint" />
+            {SITE.email}
+          </a>
+        </li>
+        {
+          FEATURES.showPhone && (
+            <li>
+              <a href={`tel:${SITE.phone.href}`} class="inline-flex items-center gap-3 transition-colors hover:text-ivory">
+                <Icon name="phone" size={18} class="shrink-0 text-mint" />
+                {SITE.phone.display}
+              </a>
+            </li>
+          )
+        }
+        <li class="inline-flex items-center gap-3">
+          <Icon name="globe" size={18} class="shrink-0 text-mint" />
+          {t.contact.formatValue} · {t.contact.languagesValue}
+        </li>
+      </ul>
+      <LanguageSwitcher lang={t.lang} page={page} label={t.nav.languageLabel} tone="light" class="mt-6 -ml-2" />
+    </div>
+  </div>
+
+  <div class="border-t border-ivory/10">
+    <div class="container-site flex flex-col gap-3 py-6 text-[0.82rem] text-ivory/65 sm:flex-row sm:items-center sm:justify-between">
+      <p>© {year} Joanna Pilarczyk. {t.footer.rights}</p>
+      <p>{t.footer.cookies}</p>
+      <a href="#top" class="inline-flex items-center gap-2 transition-colors hover:text-ivory">
+        {t.footer.backToTop}
+        <Icon name="arrow-up" size={16} />
+      </a>
+    </div>
+  </div>
+</footer>

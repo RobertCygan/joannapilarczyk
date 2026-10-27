@@ -1,0 +1,108 @@
+---
+import { Picture } from 'astro:assets';
+import portrait from '../assets/joanna-portrait.jpg';
+import type { Content } from '../i18n';
+import Icon from './Icon.astro';
+
+interface Props {
+  t: Content;
+}
+
+const { t } = Astro.props;
+const h = t.hero;
+---
+
+<section class="relative overflow-hidden pt-28 pb-20 sm:pt-32 lg:pt-40 lg:pb-28" aria-labelledby="hero-heading">
+  <!-- Tło: łagodny miętowy gradient i motyw splecionych pierścieni z logo -->
+  <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+    <div class="absolute top-0 right-0 h-full w-full bg-[radial-gradient(60%_55%_at_85%_35%,var(--color-mint-soft)_0%,transparent_70%)] lg:w-3/4"></div>
+    <svg class="hero-rings absolute -right-40 top-24 hidden w-[46rem] text-mint lg:block" viewBox="0 0 48 48" fill="none">
+      <path d="M26.485 15.515A12 12 0 1 1 21.106 12.409" stroke="currentColor" stroke-width="0.08"></path>
+      <path d="M21.515 32.485A12 12 0 1 1 26.894 35.591" stroke="currentColor" stroke-width="0.08"></path>
+    </svg>
+  </div>
+
+  <div class="container-site grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
+    <div class="lg:col-span-7">
+      <p
+        class="inline-flex items-center gap-2.5 rounded-full border border-mint bg-mint-50 py-2 pr-4 pl-3 text-[0.85rem] font-semibold text-forest"
+        data-reveal
+      >
+        <Icon name="online" size={18} class="text-sage-ink" />
+        {h.eyebrow}
+      </p>
+
+      <h1 id="hero-heading" class="mt-7" data-reveal style="--reveal-delay: 80ms">
+        <span class="block text-[3.4rem] leading-[0.95] sm:text-7xl lg:text-[5.6rem]">Joanna Pilarczyk</span>
+        <span class="mt-5 block font-sans text-[0.8rem] font-semibold tracking-[0.2em] text-sage-ink uppercase sm:text-[0.86rem]">
+          {
+            h.role.split('|').map((part, i) => (
+              <>
+                {i > 0 && <span class="mx-3 inline-block h-3 w-px translate-y-[1px] bg-sage align-baseline" aria-hidden="true" />}
+                <span class="inline-block">{part.trim()}</span>
+              </>
+            ))
+          }
+        </span>
+      </h1>
+
+      <p class="lead mt-7 max-w-xl" data-reveal style="--reveal-delay: 160ms">{h.lead}</p>
+
+      <div class="mt-9 flex flex-wrap gap-3" data-reveal style="--reveal-delay: 240ms">
+        <a href="#contact" class="btn btn-primary">
+          {h.ctaPrimary}
+          <Icon name="arrow" size={18} class="btn-arrow" />
+        </a>
+        <a href="#services" class="btn btn-outline">{h.ctaSecondary}</a>
+      </div>
+
+      <ul class="mt-12 flex max-w-xl flex-col gap-3 border-t border-line pt-6 text-[0.9rem] text-muted sm:flex-row sm:flex-wrap sm:gap-x-8" data-reveal style="--reveal-delay: 320ms">
+        {
+          h.facts.map((fact) => (
+            <li class="flex items-start gap-2">
+              <Icon name="check" size={16} class="mt-1 shrink-0 text-sage" />
+              <span>{fact}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="relative mx-auto w-full max-w-sm sm:max-w-md lg:col-span-5 lg:max-w-none" data-reveal style="--reveal-delay: 120ms">
+      <div class="absolute -inset-2 translate-x-2 translate-y-2 rounded-[2rem] border border-sage/40 sm:-inset-3 sm:translate-x-4 sm:translate-y-4" aria-hidden="true"></div>
+      <Picture
+        src={portrait}
+        alt={h.portraitAlt}
+        formats={['avif', 'webp']}
+        widths={[420, 640, 860, 1122]}
+        sizes="(min-width: 1024px) 40vw, (min-width: 640px) 28rem, 90vw"
+        loading="eager"
+        fetchpriority="high"
+        class="relative aspect-[4/5] w-full rounded-[1.75rem] object-cover shadow-lift"
+      />
+      <div class="absolute -bottom-6 -left-4 flex items-center gap-3 rounded-2xl border border-line bg-white/95 px-4 py-3 shadow-soft backdrop-blur sm:-left-8">
+        <span class="flex h-10 w-10 items-center justify-center rounded-full bg-mint-50 text-forest">
+          <Icon name="globe" size={20} />
+        </span>
+        <span class="leading-tight">
+          <span class="block text-[0.9rem] font-semibold text-forest">{h.badgeTitle}</span>
+          <span class="block text-[0.8rem] text-muted">{h.badgeText}</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-rings {
+    animation: drift 40s ease-in-out infinite alternate;
+  }
+  @keyframes drift {
+    from {
+      transform: rotate(0deg) translateY(0);
+    }
+    to {
+      transform: rotate(10deg) translateY(-12px);
+    }
+  }
+</style>

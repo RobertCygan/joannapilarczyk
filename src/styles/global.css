@@ -1,0 +1,159 @@
+@import 'tailwindcss';
+
+@import '@fontsource/cormorant-garamond/latin-500.css';
+@import '@fontsource/cormorant-garamond/latin-ext-500.css';
+@import '@fontsource/cormorant-garamond/latin-600.css';
+@import '@fontsource/cormorant-garamond/latin-ext-600.css';
+@import '@fontsource/cormorant-garamond/latin-500-italic.css';
+@import '@fontsource/cormorant-garamond/latin-ext-500-italic.css';
+@import '@fontsource-variable/manrope/wght.css';
+
+@theme {
+  --color-mint: #a8d5c2;
+  --color-mint-soft: #ddefe6;
+  --color-mint-50: #f0f8f4;
+  --color-ivory: #faf9f6;
+  --color-sage: #789c8a;
+  /* Szałwia przyciemniona do tekstu (kontrast 5.3:1 na ivory). */
+  --color-sage-ink: #4f6f60;
+  --color-forest: #29483e;
+  --color-forest-deep: #1f3830;
+  --color-sand: #eae4da;
+  --color-line: #e3ded4;
+  --color-graphite: #303b37;
+  --color-muted: #5e6b66;
+
+  --font-serif: 'Cormorant Garamond', 'Iowan Old Style', Georgia, serif;
+  --font-sans: 'Manrope Variable', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+  --shadow-soft: 0 1px 2px rgb(41 72 62 / 0.04), 0 8px 24px -12px rgb(41 72 62 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(41 72 62 / 0.05), 0 18px 40px -18px rgb(41 72 62 / 0.22);
+
+  --ease-calm: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-ivory font-sans text-graphite antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    font-feature-settings: 'ss01';
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-serif text-forest;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    @apply bg-mint text-forest;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-forest);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .container-site {
+    @apply mx-auto w-full max-w-[76rem] px-5 sm:px-8 lg:px-10;
+  }
+
+  .section {
+    @apply py-20 sm:py-24 lg:py-32;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-3 text-[0.75rem] font-semibold tracking-[0.2em] text-sage-ink uppercase;
+  }
+  .eyebrow::before {
+    content: '';
+    @apply h-px w-8 bg-sage;
+  }
+
+  .h-section {
+    @apply text-[2.4rem] leading-[1.08] sm:text-5xl lg:text-[3.6rem];
+  }
+
+  .lead {
+    @apply text-lg leading-relaxed text-muted;
+  }
+
+  .btn {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-7 text-[0.95rem] font-semibold tracking-[0.01em] transition duration-300;
+    transition-timing-function: var(--ease-calm);
+  }
+  .btn-primary {
+    @apply bg-forest text-ivory hover:bg-forest-deep hover:shadow-lift;
+  }
+  .btn-primary:hover .btn-arrow {
+    transform: translateX(3px);
+  }
+  .btn-outline {
+    @apply border border-forest/25 text-forest hover:border-forest hover:bg-white;
+  }
+  .btn-light {
+    @apply bg-ivory text-forest hover:bg-white;
+  }
+  .btn-arrow {
+    @apply transition-transform duration-300;
+  }
+
+  .card {
+    @apply rounded-2xl border border-line bg-white;
+  }
+
+  .link-underline {
+    @apply underline decoration-sage/60 decoration-1 underline-offset-4 transition-colors hover:decoration-forest;
+  }
+
+  /* Pojawianie się przy przewijaniu — tylko gdy JS działa i ruch jest dozwolony. */
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 0.9s var(--ease-calm),
+      transform 0.9s var(--ease-calm);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .js [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .js [data-reveal] {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}

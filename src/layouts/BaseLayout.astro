@@ -1,0 +1,81 @@
+---
+import '../styles/global.css';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE } from '../config';
+import { DEFAULT_LANG, ROUTES, alternatesFor, type Content, type PageKey } from '../i18n';
+
+interface Props {
+  t: Content;
+  page: PageKey;
+  title: string;
+  description: string;
+  noindex?: boolean;
+  jsonLd?: Record<string, unknown>;
+}
+
+const { t, page, title, description, noindex = false, jsonLd } = Astro.props;
+
+const canonical = new URL(ROUTES[page][t.lang], SITE.url).href;
+const alternates = alternatesFor(page);
+const ogImage = new URL(`/og/og-${t.lang}.jpg`, SITE.url).href;
+---
+
+<!doctype html>
+<html lang={t.htmlLang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+
+    {
+      !noindex &&
+        alternates.map((a) => <link rel="alternate" hreflang={a.hreflang} href={new URL(a.path, SITE.url).href} />)
+    }
+    {!noindex && <link rel="alternate" hreflang="x-default" href={new URL(ROUTES[page][DEFAULT_LANG], SITE.url).href} />}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Joanna Pilarczyk" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={t.ogLocale} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`Joanna Pilarczyk – ${t.footer.tagline}`} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#FAF9F6" />
+    <meta name="format-detection" content="telephone=no" />
+
+    {jsonLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
+  </head>
+  <body class="min-h-dvh">
+    <a
+      href="#main"
+      class="sr-only z-[60] rounded-full bg-forest px-5 py-3 text-ivory focus:not-sr-only focus:fixed focus:top-4 focus:left-4"
+      >{t.nav.skipToContent}</a
+    >
+    <span id="top" class="absolute top-0"></span>
+    <Header t={t} page={page} />
+    <main id="main" tabindex="-1" class="outline-none">
+      <slot />
+    </main>
+    <Footer t={t} page={page} />
+
+    <script>
+      import '../scripts/site';
+    </script>
+  </body>
+</html>
