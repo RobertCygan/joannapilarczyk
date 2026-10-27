@@ -12,7 +12,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "assets": "python3 scripts/build_brand_assets.py"
+    "assets": "python3 scripts/build_brand_assets.py",
+    "build:offline": "astro build && node scripts/build_offline.mjs"
   },
   "dependencies": {
     "@fontsource-variable/manrope": "5.3.0",
