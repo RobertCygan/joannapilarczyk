@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joanna Pilarczyk – Psycholog / Psychoterapeuta | Kristiansand, Norge</title>
+<meta name="description" content="Pomoc psychologiczna dla Polaków w Norwegii. Psychoterapia indywidualna, par, rodzin. Online i stacjonarnie w Kristiansand.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   COMPILED FROM SCSS – Joanna Pilarczyk | Psycholog / Psychoterapeuta
+   ============================================================ */
+
+:root {
+  --c-primary:     #7C3AED;
+  --c-primary-l:   #A78BFA;
+  --c-secondary:   #BE185D;
+  --c-accent:      #EC4899;
+  --c-bg:          #FEFAFF;
+  --c-surface:     #FFFFFF;
+  --c-surface-alt: #F9F5FF;
+  --c-purple-l:    #EDE9FE;
+  --c-pink-l:      #FCE7F3;
+  --c-text:        #1E1B4B;
+  --c-text-mid:    #4B5563;
+  --c-text-light:  #9CA3AF;
+  --c-border:      #E5E7EB;
+  --c-green:       #16A34A;
+  --c-green-l:     #F0FDF4;
+  --c-green-b:     #BBF7D0;
+  --grad:          linear-gradient(135deg, #7C3AED 0%, #BE185D 100%);
+  --grad-soft:     linear-gradient(135deg, #EDE9FE 0%, #FCE7F3 100%);
+  --grad-hero:     linear-gradient(135deg,#1E1B4B 0%,#4C1D95 28%,#7C3AED 58%,#BE185D 82%,#DB2777 100%);
+  --sh-sm:  0 1px 3px rgba(124,58,237,.1), 0 1px 2px rgba(0,0,0,.06);
+  --sh-md:  0 4px 6px rgba(124,58,237,.07), 0 2px 4px rgba(0,0,0,.06);
+  --sh-lg:  0 10px 15px rgba(124,58,237,.1), 0 4px 6px rgba(0,0,0,.05);
+  --sh-xl:  0 20px 25px rgba(124,58,237,.1), 0 10px 10px rgba(0,0,0,.04);
+  --r-sm: 8px; --r-md: 16px; --r-lg: 24px; --r-full: 9999px;
+  --ff-head: 'Playfair Display', Georgia, serif;
+  --ff-body: 'Inter', system-ui, sans-serif;
+  --t: .3s cubic-bezier(.4,0,.2,1);
+  --mw: 1920px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--ff-body);
+  background: var(--c-bg);
+  color: var(--c-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  max-width: var(--mw);
+  margin: 0 auto;
+}
+h1,h2,h3,h4 { font-family: var(--ff-head); line-height: 1.2; }
+h1 { font-size: clamp(2.2rem,5vw,4.2rem); font-weight: 700; }
+h2 { font-size: clamp(1.7rem,3vw,2.6rem); font-weight: 600; }
+h3 { font-size: clamp(1.1rem,2vw,1.45rem); font-weight: 600; }
+p  { color: var(--c-text-mid); line-height: 1.85; }
+a  { text-decoration: none; color: inherit; transition: var(--t); }
+img { display: block; max-width: 100%; object-fit: cover; }
+
+.container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+
+.badge {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .4rem 1rem;
+  background: var(--grad-soft);
+  border-radius: var(--r-full);
+  font-size: .75rem; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase;
+  color: var(--c-primary); margin-bottom: 1rem;
+}
+.sec-head { text-align: center; margin-bottom: 3.5rem; }
+.sec-head p { max-width: 620px; margin: .75rem auto 0; font-size: 1.05rem; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .88rem 2rem; border-radius: var(--r-full);
+  font-family: var(--ff-body); font-size: .92rem; font-weight: 600;
+  cursor: pointer; transition: var(--t); border: 2px solid transparent; white-space: nowrap;
+}
+.btn-primary { background: var(--grad); color: #fff; box-shadow: 0 4px 15px rgba(124,58,237,.3); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(124,58,237,.4); }
+.btn-outline  { background: transparent; color: var(--c-primary); border-color: var(--c-primary); }
+.btn-outline:hover { background: var(--c-purple-l); transform: translateY(-2px); }
+.btn-ghost    { background: white; color: var(--c-primary); box-shadow: var(--sh-md); }
+.btn-ghost:hover { transform: translateY(-2px); box-shadow: var(--sh-lg); }
+.btn-hero-out { background: transparent; color: #fff; border-color: rgba(255,255,255,.45); }
+.btn-hero-out:hover { background: rgba(255,255,255,.12); transform: translateY(-2px); }
+
+/* scroll reveal */
+.reveal, .reveal-l, .reveal-r {
+  opacity: 0; transition: opacity .75s ease, transform .75s ease;
+}
+.reveal   { transform: translateY(30px); }
+.reveal-l { transform: translateX(-40px); }
+.reveal-r { transform: translateX(40px); }
+.reveal.vis, .reveal-l.vis, .reveal-r.vis { opacity: 1; transform: none; }
+
+/* ===== NAV ===== */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+  padding: 1.1rem 0; transition: var(--t); max-width: var(--mw); margin: 0 auto;
+}
+.nav.scrolled {
+  background: rgba(255,255,255,.96); backdrop-filter: blur(20px);
+  box-shadow: var(--sh-md); padding: .75rem 0;
+}
+.nav__inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+.nav__logo  { display: flex; flex-direction: column; }
+.nav__name  {
+  font-family: var(--ff-head); font-size: 1.25rem; font-weight: 700;
+  background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.nav__sub   { font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: var(--c-text-light); font-weight: 500; }
+.nav__links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav__links a {
+  font-size: .88rem; font-weight: 500; color: var(--c-text-mid);
+  position: relative; padding-bottom: 3px;
+}
+.nav__links a::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 0; height: 2px; background: var(--grad); border-radius: 1px; transition: var(--t);
+}
+.nav__links a:hover::after, .nav__links a.active::after { width: 100%; }
+.nav__links a:hover { color: var(--c-primary); }
+.nav__right { display: flex; align-items: center; gap: 1rem; }
+
+.lang-sw { display: flex; align-items: center; background: var(--c-surface-alt); border-radius: var(--r-full); padding: 3px; border: 1px solid var(--c-border); }
+.lang-btn { padding: .3rem .85rem; border-radius: var(--r-full); font-size: .78rem; font-weight: 700; cursor: pointer; transition: var(--t); background: transparent; border: none; color: var(--c-text-light); font-family: var(--ff-body); }
+.lang-btn.active { background: var(--grad); color: white; }
+
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px; background: none; border: none; }
+.hamburger span { width: 24px; height: 2px; background: var(--c-primary); border-radius: 2px; transition: var(--t); }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mob-nav { display: none; position: fixed; inset: 0; z-index: 850; background: rgba(255,255,255,.98); backdrop-filter: blur(20px); flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; }
+.mob-nav.open { display: flex; }
+.mob-nav a { font-family: var(--ff-head); font-size: 2rem; color: var(--c-text); }
+.mob-nav a:hover { color: var(--c-primary); }
+
+/* ===== HERO ===== */
+.hero { min-height: 100svh; position: relative; display: flex; align-items: center; overflow: hidden; padding-top: 90px; }
+.hero__bg { position: absolute; inset: 0; background: var(--grad-hero); z-index: 0; }
+.blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: .27; animation: blobFloat 9s ease-in-out infinite; }
+.blob-1 { width: 650px; height: 650px; background: #EC4899; top: -220px; right: -120px; animation-delay: 0s; }
+.blob-2 { width: 420px; height: 420px; background: #A78BFA; bottom: -80px; left: -60px; animation-delay: 3.5s; }
+.blob-3 { width: 320px; height: 320px; background: #F9A8D4; top: 38%; left: 36%; animation-delay: 6s; }
+@keyframes blobFloat { 0%,100%{transform:scale(1) translateY(0)} 33%{transform:scale(1.06) translateY(-30px)} 66%{transform:scale(.94) translateY(18px)} }
+
+.particles { position: absolute; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; }
+.particle { position: absolute; border-radius: 50%; background: rgba(255,255,255,.45); animation: ptFloat linear infinite; }
+@keyframes ptFloat { 0%{transform:translateY(110vh) rotate(0deg);opacity:0} 8%{opacity:1} 92%{opacity:.4} 100%{transform:translateY(-80px) rotate(360deg);opacity:0} }
+
+.hero__inner { position: relative; z-index: 2; max-width: 760px; }
+.hero-tag { display: inline-flex; align-items: center; gap: .5rem; padding: .4rem 1.2rem; background: rgba(255,255,255,.14); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.3); border-radius: var(--r-full); color: white; font-size: .78rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 1.6rem; }
+.hero-tag::before { content: '●'; font-size: .48rem; animation: pulse 2s infinite; color: #F9A8D4; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.25} }
+.hero h1 { color: white; margin-bottom: 1.4rem; line-height: 1.15; }
+.hero h1 em { font-style: italic; color: #F9A8D4; }
+.hero__sub { color: rgba(255,255,255,.85); font-size: 1.05rem; line-height: 1.9; margin-bottom: 2.5rem; max-width: 580px; }
+.hero__btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 4rem; }
+
+.hero__scroll { position: absolute; bottom: 7rem; left: 50%; transform: translateX(-50%); z-index: 2; display: flex; flex-direction: column; align-items: center; gap: .5rem; color: rgba(255,255,255,.55); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; animation: scrollB 2.2s ease-in-out infinite; }
+.hero__scroll-line { width: 1px; height: 38px; background: linear-gradient(to bottom,rgba(255,255,255,.55),transparent); }
+@keyframes scrollB { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(9px)} }
+
+.hero__stats { position: absolute; bottom: 0; left: 0; right: 0; z-index: 2; background: rgba(255,255,255,.1); backdrop-filter: blur(20px); border-top: 1px solid rgba(255,255,255,.2); padding: 1.5rem 0; }
+.stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; text-align: center; }
+.stat-n { font-family: var(--ff-head); font-size: 2rem; font-weight: 700; color: white; }
+.stat-l { font-size: .78rem; color: rgba(255,255,255,.68); margin-top: .2rem; }
+
+/* ===== ABOUT ===== */
+.about { padding: 8rem 0; background: var(--c-surface); }
+.about__grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 5rem; align-items: center; }
+
+.photo-wrap { position: relative; }
+.photo-decor { position: absolute; top: -1.5rem; left: -1.5rem; width: 80px; height: 80px; border-radius: var(--r-md); background: var(--grad); opacity: .14; z-index: 0; }
+
+/* Photo placeholder – profile */
+.photo-frame {
+  width: 100%; aspect-ratio: 3/4; border-radius: var(--r-lg);
+  background: var(--grad-soft); position: relative; z-index: 1; overflow: hidden;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem;
+  border: 2px dashed rgba(124,58,237,.25);
+}
+.photo-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: var(--r-lg); }
+.photo-placeholder-label {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; align-items: center; gap: .75rem;
+  padding: 2rem; text-align: center;
+}
+.photo-placeholder-label .ph-icon { font-size: 3rem; opacity: .5; }
+.photo-placeholder-label .ph-text { font-size: .85rem; color: var(--c-primary); font-weight: 600; opacity: .7; line-height: 1.5; }
+.photo-placeholder-label .ph-sub  { font-size: .72rem; color: var(--c-text-light); }
+
+.photo-badge { position: absolute; bottom: -1.1rem; right: -1.1rem; background: white; border-radius: var(--r-md); padding: 1rem 1.5rem; box-shadow: var(--sh-xl); text-align: center; z-index: 2; }
+.photo-badge strong { display: block; font-size: 1.55rem; font-family: var(--ff-head); background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.photo-badge span { font-size: .75rem; color: var(--c-text-light); }
+
+.about__name { font-family: var(--ff-head); font-size: 2rem; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: .2rem; }
+.about__role { color: var(--c-text-light); font-size: .82rem; letter-spacing: .08em; text-transform: uppercase; font-weight: 500; margin-bottom: 1.5rem; }
+.about p { margin-bottom: .9rem; }
+
+/* pull-quote */
+.pull-quote {
+  margin: 1.8rem 0; padding: 1.25rem 1.5rem;
+  border-left: 4px solid var(--c-accent);
+  background: var(--c-pink-l); border-radius: 0 var(--r-md) var(--r-md) 0;
+  font-family: var(--ff-head); font-style: italic; color: var(--c-secondary); font-size: 1rem; line-height: 1.7;
+}
+
+.creds { display: flex; flex-wrap: wrap; gap: .7rem; margin: 1.8rem 0; }
+.cred { display: inline-flex; align-items: center; gap: .4rem; padding: .4rem .9rem; background: var(--c-purple-l); color: var(--c-primary); border-radius: var(--r-full); font-size: .78rem; font-weight: 600; }
+.cred::before { content: '✓'; font-weight: 800; }
+
+/* ===== SERVICES ===== */
+.services { padding: 8rem 0; background: var(--c-surface-alt); }
+.svc-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(265px,1fr)); gap: 1.4rem; }
+.svc-card { background: white; border-radius: var(--r-lg); padding: 2.2rem 1.8rem; box-shadow: var(--sh-sm); transition: var(--t); border: 1px solid var(--c-border); position: relative; overflow: hidden; }
+.svc-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--grad); transform: scaleX(0); transform-origin: left; transition: var(--t); }
+.svc-card:hover { transform: translateY(-7px); box-shadow: var(--sh-xl); }
+.svc-card:hover::before { transform: scaleX(1); }
+.svc-icon { width: 58px; height: 58px; border-radius: var(--r-md); background: var(--grad-soft); display: flex; align-items: center; justify-content: center; font-size: 1.7rem; margin-bottom: 1.3rem; }
+.svc-card h3 { margin-bottom: .55rem; font-size: 1.15rem; }
+.svc-card p { font-size: .87rem; margin-bottom: 0; }
+
+/* ===== GALLERY ===== */
+.gallery { padding: 8rem 0; background: white; }
+.gallery-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; }
+
+.photo-slot {
+  border-radius: var(--r-lg); overflow: hidden; position: relative;
+  background: var(--grad-soft);
+  border: 2px dashed rgba(124,58,237,.25);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: .75rem; padding: 2.5rem 1.5rem; text-align: center; min-height: 260px;
+  transition: var(--t); cursor: default;
+}
+.photo-slot:hover { border-color: var(--c-primary-l); background: linear-gradient(135deg, #E9D5FF 0%, #FBCFE8 100%); }
+.photo-slot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: calc(var(--r-lg) - 2px); }
+.photo-slot--tall { grid-row: span 2; min-height: 100%; }
+.photo-slot .ps-icon { font-size: 2.5rem; opacity: .4; }
+.photo-slot .ps-label { font-size: .82rem; font-weight: 600; color: var(--c-primary); opacity: .75; }
+.photo-slot .ps-desc  { font-size: .72rem; color: var(--c-text-light); line-height: 1.5; }
+
+/* ===== SPECIALIZATIONS ===== */
+.specs { padding: 8rem 0; background: var(--c-surface-alt); }
+.spec-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(195px,1fr)); gap: 1rem; max-width: 920px; margin: 0 auto; }
+.spec-item { display: flex; align-items: center; gap: .75rem; padding: 1rem 1.2rem; background: white; border-radius: var(--r-md); border: 1px solid var(--c-border); transition: var(--t); }
+.spec-item:hover { background: var(--grad-soft); border-color: var(--c-primary-l); transform: translateY(-3px); box-shadow: var(--sh-md); }
+.spec-icon  { font-size: 1.3rem; }
+.spec-label { font-size: .88rem; font-weight: 500; color: var(--c-text); }
+
+/* ===== CALENDAR ===== */
+.cal-sec { padding: 8rem 0; background: white; }
+.cal-wrap { max-width: 900px; margin: 0 auto; }
+.cal { background: white; border-radius: var(--r-lg); box-shadow: var(--sh-xl); overflow: hidden; }
+.cal-head { background: var(--grad); padding: 1.4rem 2rem; display: flex; align-items: center; justify-content: space-between; color: white; }
+.cal-nav { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,.2); border: none; color: white; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; transition: var(--t); }
+.cal-nav:hover { background: rgba(255,255,255,.35); }
+.cal-month { font-family: var(--ff-head); font-size: 1.3rem; font-weight: 600; }
+.cal-body { padding: 1.5rem; }
+.cal-dl { display: grid; grid-template-columns: repeat(7,1fr); margin-bottom: .5rem; }
+.cal-dl-cell { text-align: center; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--c-text-light); padding: .5rem; }
+.cal-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 4px; }
+.cal-day { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; border-radius: var(--r-sm); font-size: .88rem; font-weight: 500; cursor: pointer; transition: var(--t); position: relative; user-select: none; }
+.cal-day.empty { cursor: default; }
+.cal-day.past  { color: var(--c-text-light); cursor: default; }
+.cal-day.today { background: var(--grad-soft); color: var(--c-primary); font-weight: 700; border: 2px solid var(--c-primary-l); }
+.cal-day.avail { background: var(--c-green-l); color: var(--c-green); border: 1px solid var(--c-green-b); }
+.cal-day.avail:hover { background: var(--c-green); color: white; transform: scale(1.1); box-shadow: 0 4px 12px rgba(22,163,74,.3); }
+.cal-day.busy  { color: var(--c-text-light); cursor: default; }
+.cal-day.sel   { background: var(--grad) !important; color: white !important; transform: scale(1.1); box-shadow: 0 4px 12px rgba(124,58,237,.4); }
+.cal-dot { position: absolute; bottom: 3px; left: 50%; transform: translateX(-50%); width: 4px; height: 4px; background: var(--c-green); border-radius: 50%; }
+.cal-day.avail .cal-dot, .cal-day.sel .cal-dot { background: rgba(255,255,255,.7); }
+.cal-legend { display: flex; gap: 1.5rem; padding: 1rem 1.5rem; border-top: 1px solid var(--c-border); flex-wrap: wrap; }
+.cal-legend-item { display: flex; align-items: center; gap: .5rem; font-size: .78rem; color: var(--c-text-mid); }
+.cal-legend-dot  { width: 12px; height: 12px; border-radius: 50%; }
+
+.slots-panel { background: white; border-radius: var(--r-lg); padding: 2rem; box-shadow: var(--sh-xl); margin-top: 1.5rem; display: none; }
+.slots-panel.vis { display: block; animation: fadeUp .4s ease; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:none} }
+.slots-title { font-family: var(--ff-head); font-size: 1.2rem; margin-bottom: 1.5rem; }
+.slots-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(110px,1fr)); gap: .7rem; margin-bottom: 1.5rem; }
+.slot { padding: .72rem; border-radius: var(--r-md); border: 2px solid var(--c-border); background: white; font-size: .9rem; font-weight: 600; cursor: pointer; transition: var(--t); color: var(--c-text); font-family: var(--ff-body); text-align: center; }
+.slot:hover, .slot.sel { border-color: var(--c-primary); background: var(--c-purple-l); color: var(--c-primary); }
+.slot.booked { background: var(--c-surface-alt); color: var(--c-text-light); cursor: not-allowed; text-decoration: line-through; }
+
+/* ===== CONTACT ===== */
+.contact { padding: 8rem 0; background: var(--c-surface-alt); }
+.contact__grid { display: grid; grid-template-columns: 1fr 1.55fr; gap: 5rem; align-items: start; }
+.info-item { display: flex; gap: 1rem; margin-bottom: 2rem; }
+.info-icon { width: 48px; height: 48px; border-radius: var(--r-md); background: var(--grad-soft); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+.info-lbl { font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; color: var(--c-text-light); margin-bottom: .25rem; font-weight: 700; }
+.info-val { font-weight: 500; color: var(--c-text); line-height: 1.65; }
+.info-val a { color: var(--c-primary); }
+.info-val a:hover { text-decoration: underline; }
+
+.form-wrap { background: white; border-radius: var(--r-lg); padding: 3rem; box-shadow: var(--sh-lg); }
+.form-group { margin-bottom: 1.4rem; }
+.form-lbl { display: block; font-size: .82rem; font-weight: 700; margin-bottom: .45rem; color: var(--c-text); }
+.form-ctrl { width: 100%; padding: .82rem 1.1rem; border: 2px solid var(--c-border); border-radius: var(--r-sm); font-family: var(--ff-body); font-size: .93rem; color: var(--c-text); background: white; transition: var(--t); outline: none; }
+.form-ctrl:focus { border-color: var(--c-primary); box-shadow: 0 0 0 4px rgba(124,58,237,.1); }
+.form-ctrl.err { border-color: #EF4444; }
+textarea.form-ctrl { resize: vertical; min-height: 120px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-check { display: flex; align-items: flex-start; gap: .7rem; margin-bottom: 1.4rem; }
+.form-check input[type=checkbox] { width: 17px; height: 17px; accent-color: var(--c-primary); margin-top: 3px; flex-shrink: 0; cursor: pointer; }
+.form-check label { font-size: .78rem; color: var(--c-text-mid); cursor: pointer; line-height: 1.6; }
+.form-check label a { color: var(--c-primary); text-decoration: underline; }
+.form-success { display: none; padding: 1.5rem; background: var(--c-green-l); border: 1px solid var(--c-green-b); border-radius: var(--r-md); color: #15803D; text-align: center; font-weight: 600; margin-top: 1rem; animation: fadeUp .4s ease; }
+
+/* ===== FOOTER ===== */
+.footer { background: #1E1B4B; color: rgba(255,255,255,.65); padding: 4rem 0 2rem; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 3rem; }
+.footer-name  { font-family: var(--ff-head); font-size: 1.5rem; font-weight: 700; color: white; margin-bottom: .35rem; }
+.footer-role  { font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: 1.4rem; }
+.footer-desc  { font-size: .88rem; line-height: 1.8; }
+.footer-heading { color: white; font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 1.2rem; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: .7rem; }
+.footer-links a { font-size: .88rem; transition: var(--t); }
+.footer-links a:hover { color: white; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,.1); padding-top: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: .78rem; }
+.socials { display: flex; gap: .7rem; margin-top: 1.4rem; }
+.social-btn { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,.1); border: none; color: white; display: flex; align-items: center; justify-content: center; font-size: .78rem; font-weight: 700; cursor: pointer; transition: var(--t); }
+.social-btn:hover { background: var(--c-primary); }
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1100px) {
+  .about__grid { grid-template-columns: 1fr; gap: 3rem; }
+  .photo-frame  { max-width: 380px; margin: 0 auto; }
+  .contact__grid { grid-template-columns: 1fr; gap: 3rem; }
+  .footer-grid  { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .stats-grid   { grid-template-columns: repeat(2,1fr); }
+  .gallery-grid { grid-template-columns: 1fr 1fr; }
+  .photo-slot--tall { grid-row: span 1; }
+}
+@media(max-width:768px) {
+  .nav__links, .nav__right { display: none; }
+  .hamburger { display: flex; }
+  .hero__btns { flex-direction: column; align-items: flex-start; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-grid  { grid-template-columns: 1fr; }
+  .form-wrap { padding: 1.8rem; }
+  .hero { padding-bottom: 5rem; }
+  .gallery-grid { grid-template-columns: 1fr; }
+}
+@media(max-width:480px) {
+  .container { padding: 0 1rem; }
+  .cal-body { padding: 1rem .75rem; }
+  .svc-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="nav" id="nav">
+  <div class="container">
+    <div class="nav__inner">
+      <a href="#" class="nav__logo">
+        <span class="nav__name">Joanna Pilarczyk</span>
+        <span class="nav__sub lang-pl">Psycholog / Psychoterapeuta</span>
+        <span class="nav__sub lang-no" style="display:none">Psykolog / Psykoterapeut</span>
+      </a>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#about"    class="lang-pl">O mnie</a>   <a href="#about"    class="lang-no" style="display:none">Om meg</a></li>
+        <li><a href="#services" class="lang-pl">Usługi</a>   <a href="#services" class="lang-no" style="display:none">Tjenester</a></li>
+        <li><a href="#gallery"  class="lang-pl">Galeria</a>  <a href="#gallery"  class="lang-no" style="display:none">Galleri</a></li>
+        <li><a href="#calendar" class="lang-pl">Terminy</a>  <a href="#calendar" class="lang-no" style="display:none">Timeavtaler</a></li>
+        <li><a href="#contact"  class="lang-pl">Kontakt</a>  <a href="#contact"  class="lang-no" style="display:none">Kontakt</a></li>
+      </ul>
+      <div class="nav__right" id="navRight">
+        <div class="lang-sw">
+          <button class="lang-btn active" data-lang="pl">PL</button>
+          <button class="lang-btn"        data-lang="no">NO</button>
+        </div>
+        <a href="#calendar" class="btn btn-primary">
+          <span class="lang-pl">Umów wizytę</span>
+          <span class="lang-no" style="display:none">Book time</span>
+        </a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="mob-nav" id="mobNav">
+  <a href="#about"    onclick="closeMob()"><span class="lang-pl">O mnie</span><span class="lang-no" style="display:none">Om meg</span></a>
+  <a href="#services" onclick="closeMob()"><span class="lang-pl">Usługi</span><span class="lang-no" style="display:none">Tjenester</span></a>
+  <a href="#gallery"  onclick="closeMob()"><span class="lang-pl">Galeria</span><span class="lang-no" style="display:none">Galleri</span></a>
+  <a href="#calendar" onclick="closeMob()"><span class="lang-pl">Terminy</span><span class="lang-no" style="display:none">Timeavtaler</span></a>
+  <a href="#contact"  onclick="closeMob()"><span class="lang-pl">Kontakt</span><span class="lang-no" style="display:none">Kontakt</span></a>
+  <div class="lang-sw" style="margin-top:.5rem">
+    <button class="lang-btn active" data-lang="pl">PL</button>
+    <button class="lang-btn"        data-lang="no">NO</button>
+  </div>
+</div>
+
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+  <div class="hero__bg"></div>
+  <div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div>
+  <div class="particles" id="particles"></div>
+
+  <div class="container">
+    <div class="hero__inner">
+      <div class="hero-tag lang-pl">Pomoc dla Polaków w Norwegii</div>
+      <div class="hero-tag lang-no" style="display:none">Hjelp til polakker i Norge</div>
+
+      <h1 class="lang-pl">Psychoterapia,<br>która <em>zmienia życie</em></h1>
+      <h1 class="lang-no" style="display:none">Psykoterapi<br>som <em>forandrer livet</em></h1>
+
+      <p class="hero__sub lang-pl">Pomoc i wsparcie dla Polaków w Norwegii, którzy spotykają się z trudnościami życia na emigracji. Pomoc indywidualna, dla par i rodzin. Psychoterapia. Doradztwo. Interwencja kryzysowa.</p>
+      <p class="hero__sub lang-no" style="display:none">Hjelp og støtte til polakker i Norge som møter vanskeligheter i livet som emigrant. Individuell hjelp, for par og familier. Psykoterapi. Rådgivning. Krisehjelp.</p>
+
+      <div class="hero__btns">
+        <a href="#calendar" class="btn btn-ghost">
+          <span class="lang-pl">📅 Umów wizytę</span>
+          <span class="lang-no" style="display:none">📅 Book time</span>
+        </a>
+        <a href="#about" class="btn btn-hero-out">
+          <span class="lang-pl">Dowiedz się więcej</span>
+          <span class="lang-no" style="display:none">Les mer om meg</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero__scroll">
+    <div class="hero__scroll-line"></div>
+    <span class="lang-pl">Przewiń</span><span class="lang-no" style="display:none">Rull ned</span>
+  </div>
+
+  <div class="hero__stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div>
+          <div class="stat-n" data-target="11">11+</div>
+          <div class="stat-l lang-pl">Lat w Norwegii</div>
+          <div class="stat-l lang-no" style="display:none">År i Norge</div>
+        </div>
+        <div>
+          <div class="stat-n" data-target="500">500+</div>
+          <div class="stat-l lang-pl">Klientów</div>
+          <div class="stat-l lang-no" style="display:none">Klienter</div>
+        </div>
+        <div>
+          <div class="stat-n">Online</div>
+          <div class="stat-l lang-pl">Cała Norwegia</div>
+          <div class="stat-l lang-no" style="display:none">Hele Norge</div>
+        </div>
+        <div>
+          <div class="stat-n">PL / EN</div>
+          <div class="stat-l lang-pl">Języki terapii</div>
+          <div class="stat-l lang-no" style="display:none">Terapispråk</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== ABOUT ===== -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about__grid">
+
+      <!-- PHOTO PLACEHOLDER – profile -->
+      <div class="photo-wrap reveal-l">
+        <div class="photo-decor"></div>
+        <div class="photo-frame" id="profilePhotoFrame">
+          <!-- Aby dodać zdjęcie: usuń poniższy div i wstaw <img src="twoje-zdjecie.jpg" alt="Joanna Pilarczyk"> -->
+          <div class="photo-placeholder-label">
+            <div class="ph-icon">📷</div>
+            <div class="ph-text lang-pl">Zdjęcie profilowe<br>Joanny Pilarczyk</div>
+            <div class="ph-text lang-no" style="display:none">Profilbilde<br>Joanna Pilarczyk</div>
+            <div class="ph-sub lang-pl">Zastąp własnym zdjęciem lub wygenerowanym AI</div>
+            <div class="ph-sub lang-no" style="display:none">Erstatt med ditt eget bilde eller AI-generert bilde</div>
+          </div>
+        </div>
+        <div class="photo-badge">
+          <strong>2013</strong>
+          <span class="lang-pl">w Norwegii</span>
+          <span class="lang-no" style="display:none">i Norge</span>
+        </div>
+      </div>
+
+      <div class="reveal-r">
+        <div class="badge lang-pl">O mnie</div>
+        <div class="badge lang-no" style="display:none">Om meg</div>
+
+        <div class="about__name">Joanna Pilarczyk</div>
+        <div class="about__role lang-pl">Psycholog &nbsp;·&nbsp; Psychoterapeuta indywidualny, par i rodzin</div>
+        <div class="about__role lang-no" style="display:none">Psykolog &nbsp;·&nbsp; Psykoterapeut for individ, par og familier</div>
+
+        <p class="lang-pl">Jestem psychologiem oraz psychoterapeutą pracującym w nurcie systemowym. Mam doświadczenie w pracy w kontakcie indywidualnym, terapii par oraz terapii grupowej. Od lipca 2013 mieszkam na stałe w Norwegii w Kristiansand.</p>
+        <p class="lang-no" style="display:none">Jeg er psykolog og psykoterapeut som arbeider med en systemisk tilnærming. Jeg har erfaring med individuell kontakt, parterapi og gruppeterapi. Siden juli 2013 er jeg fast bosatt i Kristiansand i Norge.</p>
+
+        <p class="lang-pl">Od tego czasu prowadzę konsultacje, poradnictwo i psychoterapię indywidualną online poprzez Skype, w języku polskim i angielskim. Poza kontaktem indywidualnym prowadzę także psychoterapię grupową, wykłady i warsztaty oraz szkolenia dotyczące kompetencji interpersonalnych.</p>
+        <p class="lang-no" style="display:none">Siden da tilbyr jeg online konsultasjoner, rådgivning og individuell psykoterapi via Skype, på polsk og engelsk. I tillegg til individuell kontakt tilbyr jeg også gruppepsykoterapi, forelesninger og workshops om mellommenneskelige ferdigheter.</p>
+
+        <blockquote class="pull-quote lang-pl">„Norwegia nauczyła mnie przede wszystkim pokory oraz pokazała nowe sposoby myślenia, nowe rozwiązania, rozbudziła większą ciekawość ludzi opartą na wątkach kulturowych."</blockquote>
+        <blockquote class="pull-quote lang-no" style="display:none">„Norge har lært meg ydmykhet og vist meg nye måter å tenke på, nye løsninger, og vekket nysgjerrighet på mennesker basert på kulturelle tråder."</blockquote>
+
+        <div class="creds">
+          <span class="cred lang-pl">Nurt systemowy</span>
+          <span class="cred lang-no" style="display:none">Systemisk tilnærming</span>
+          <span class="cred lang-pl">Terapia par i rodzin</span>
+          <span class="cred lang-no" style="display:none">Par- og familieterapi</span>
+          <span class="cred lang-pl">Psychoterapia grupowa</span>
+          <span class="cred lang-no" style="display:none">Gruppepsykoterapi</span>
+          <span class="cred lang-pl">Online – PL &amp; EN</span>
+          <span class="cred lang-no" style="display:none">Online – PL &amp; EN</span>
+        </div>
+
+        <a href="#calendar" class="btn btn-primary">
+          <span class="lang-pl">Umów pierwszą wizytę →</span>
+          <span class="lang-no" style="display:none">Book første time →</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== SERVICES ===== -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="badge lang-pl">Usługi</div>
+      <div class="badge lang-no" style="display:none">Tjenester</div>
+      <h2 class="lang-pl">Jak mogę Ci pomóc?</h2>
+      <h2 class="lang-no" style="display:none">Hvordan kan jeg hjelpe deg?</h2>
+      <p class="lang-pl">Oferuję szerokie spektrum wsparcia psychologicznego i terapeutycznego, dostosowanego do Twoich indywidualnych potrzeb.</p>
+      <p class="lang-no" style="display:none">Jeg tilbyr et bredt spekter av psykologisk og terapeutisk støtte, tilpasset dine individuelle behov.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card reveal">
+        <div class="svc-icon">🎯</div>
+        <h3 class="lang-pl">Pierwsza konsultacja</h3>
+        <h3 class="lang-no" style="display:none">Første konsultasjon</h3>
+        <p class="lang-pl">Spotkanie diagnostyczne pozwalające określić Twoje potrzeby i ustalić dalszy plan wsparcia. Bezpieczna, bezstresowa rozmowa.</p>
+        <p class="lang-no" style="display:none">Diagnostisk møte for å fastslå dine behov og etablere en videre støtteplan. En trygg, stressfri samtale.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-icon">🧠</div>
+        <h3 class="lang-pl">Psychoterapia indywidualna</h3>
+        <h3 class="lang-no" style="display:none">Individuell psykoterapi</h3>
+        <p class="lang-pl">Krótkoterminowa i długoterminowa. Praca w nurcie systemowym, skupiona na Twoich celach, zasobach i trudnościach.</p>
+        <p class="lang-no" style="display:none">Kortsiktig og langsiktig. Arbeid med systemisk tilnærming, fokusert på dine mål, ressurser og vanskeligheter.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-icon">💑</div>
+        <h3 class="lang-pl">Psychoterapia par</h3>
+        <h3 class="lang-no" style="display:none">Parpsykoterapi</h3>
+        <p class="lang-pl">Wsparcie dla par w kryzysach, problemach komunikacyjnych, budowanie głębszej więzi. Praca z obydwojgiem partnerów.</p>
+        <p class="lang-no" style="display:none">Støtte for par i kriser, kommunikasjonsproblemer, bygging av dypere bånd. Arbeid med begge partnere.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-icon">👨‍👩‍👧</div>
+        <h3 class="lang-pl">Psychoterapia rodzinna</h3>
+        <h3 class="lang-no" style="display:none">Familiepsykoterapi</h3>
+        <p class="lang-pl">Terapia systemowa dla rodzin – przepracowanie konfliktów, wzorców, poprawa komunikacji i relacji w rodzinie.</p>
+        <p class="lang-no" style="display:none">Systemterapi for familier – bearbeiding av konflikter, mønstre, forbedring av kommunikasjon og relasjoner i familien.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-icon">💻</div>
+        <h3 class="lang-pl">Psychoterapia online</h3>
+        <h3 class="lang-no" style="display:none">Online psykoterapi</h3>
+        <p class="lang-pl">Sesje przez bezpieczny wideolink (Skype). Dla Polaków w całej Norwegii – bez konieczności dojazdu. Po polsku i angielsku.</p>
+        <p class="lang-no" style="display:none">Timer via sikker videolink (Skype). For polakker over hele Norge – uten behov for å reise. På polsk og engelsk.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-icon">🆘</div>
+        <h3 class="lang-pl">Interwencja kryzysowa</h3>
+        <h3 class="lang-no" style="display:none">Krisehjelp</h3>
+        <p class="lang-pl">Pomoc w nagłych sytuacjach kryzysowych. Szybki dostęp do wsparcia w trudnych momentach życiowych, w tym emigracyjnych.</p>
+        <p class="lang-no" style="display:none">Hjelp i akutte krisesituasjoner. Rask tilgang til støtte i vanskelige øyeblikk, inkludert emigrasjonsutfordringer.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-icon">📚</div>
+        <h3 class="lang-pl">Warsztaty i wykłady</h3>
+        <h3 class="lang-no" style="display:none">Workshops og forelesninger</h3>
+        <p class="lang-pl">Zajęcia warsztatowe, grupy wsparcia oraz wykłady z zakresu kompetencji interpersonalnych i zdrowia psychicznego.</p>
+        <p class="lang-no" style="display:none">Workshopaktiviteter, støttegrupper og forelesninger om mellommenneskelige ferdigheter og psykisk helse.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-icon">💼</div>
+        <h3 class="lang-pl">Doradztwo zawodowe i motywacyjne</h3>
+        <h3 class="lang-no" style="display:none">Karriere- og motivasjonsrådgivning</h3>
+        <p class="lang-pl">Poradnictwo zawodowe, biznesowe oraz motywacyjne. Pomoc w odnalezieniu sensu, kierunku i pewności siebie w pracy.</p>
+        <p class="lang-no" style="display:none">Karriere-, forretnings- og motivasjonsrådgivning. Hjelp til å finne mening, retning og selvtillit i arbeidet.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== GALLERY – PHOTO PLACEHOLDERS ===== -->
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="badge lang-pl">Galeria</div>
+      <div class="badge lang-no" style="display:none">Galleri</div>
+      <h2 class="lang-pl">Przestrzeń terapeutyczna</h2>
+      <h2 class="lang-no" style="display:none">Det terapeutiske rommet</h2>
+      <p class="lang-pl">Gabinet, w którym każdy może poczuć się bezpiecznie – zarówno online, jak i twarzą w twarz.</p>
+      <p class="lang-no" style="display:none">Et kontor der alle kan føle seg trygge – både online og ansikt til ansikt.</p>
+    </div>
+
+    <div class="gallery-grid reveal">
+      <!-- PHOTO SLOT 1 – tall, situational: sesja terapeutyczna -->
+      <div class="photo-slot photo-slot--tall">
+        <!-- Zastąp: <img src="sesja-terapeutyczna.jpg" alt="Sesja terapeutyczna"> -->
+        <div class="ps-icon">🛋️</div>
+        <div class="ps-label lang-pl">Sesja indywidualna</div>
+        <div class="ps-label lang-no" style="display:none">Individuell sesjon</div>
+        <div class="ps-desc lang-pl">Zdjęcie AI lub własne:<br>atmosfera gabinetu terapeutycznego</div>
+        <div class="ps-desc lang-no" style="display:none">AI-bilde eller eget foto:<br>stemningen i terapirommet</div>
+      </div>
+
+      <!-- PHOTO SLOT 2 – sesja online -->
+      <div class="photo-slot">
+        <!-- Zastąp: <img src="sesja-online.jpg" alt="Terapia online"> -->
+        <div class="ps-icon">💻</div>
+        <div class="ps-label lang-pl">Psychoterapia online</div>
+        <div class="ps-label lang-no" style="display:none">Online psykoterapi</div>
+        <div class="ps-desc lang-pl">Zdjęcie AI: sesja przez Skype,<br>ciepłe domowe biuro</div>
+        <div class="ps-desc lang-no" style="display:none">AI-bilde: Skype-sesjon,<br>varmt hjemmekontor</div>
+      </div>
+
+      <!-- PHOTO SLOT 3 – warsztaty / sesja grupowa -->
+      <div class="photo-slot">
+        <!-- Zastąp: <img src="warsztaty-grupowe.jpg" alt="Warsztaty grupowe"> -->
+        <div class="ps-icon">👥</div>
+        <div class="ps-label lang-pl">Warsztaty grupowe</div>
+        <div class="ps-label lang-no" style="display:none">Gruppeøvelser</div>
+        <div class="ps-desc lang-pl">Zdjęcie AI: grupowa sesja<br>terapeutyczna / workshop</div>
+        <div class="ps-desc lang-no" style="display:none">AI-bilde: gruppeterapiøkt<br>/ workshop</div>
+      </div>
+
+      <!-- PHOTO SLOT 4 – Norwegia / przyroda -->
+      <div class="photo-slot">
+        <!-- Zastąp: <img src="norwegia-krajobraz.jpg" alt="Norwegia"> -->
+        <div class="ps-icon">🌊</div>
+        <div class="ps-label lang-pl">Kristiansand, Norwegia</div>
+        <div class="ps-label lang-no" style="display:none">Kristiansand, Norge</div>
+        <div class="ps-desc lang-pl">Zdjęcie Norwegii –<br>spokojna, inspirująca przyroda</div>
+        <div class="ps-desc lang-no" style="display:none">Bilde av Norge –<br>rolig, inspirerende natur</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== SPECIALIZATIONS ===== -->
+<section class="specs" id="specializations">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="badge lang-pl">Obszary pomocy</div>
+      <div class="badge lang-no" style="display:none">Hjelpeområder</div>
+      <h2 class="lang-pl">Z czym mogę pomóc?</h2>
+      <h2 class="lang-no" style="display:none">Hva kan jeg hjelpe med?</h2>
+      <p class="lang-pl">Doświadczenie w pracy z szerokim spektrum trudności psychologicznych i wyzwań życia na emigracji.</p>
+      <p class="lang-no" style="display:none">Erfaring med å arbeide med et bredt spekter av psykologiske vanskeligheter og emigrasjonsutfordringer.</p>
+    </div>
+    <div class="spec-grid reveal">
+      <div class="spec-item"><span class="spec-icon">😔</span><span class="spec-label lang-pl">Depresja</span><span class="spec-label lang-no" style="display:none">Depresjon</span></div>
+      <div class="spec-item"><span class="spec-icon">😰</span><span class="spec-label lang-pl">Lęki i fobie</span><span class="spec-label lang-no" style="display:none">Angst og fobier</span></div>
+      <div class="spec-item"><span class="spec-icon">💔</span><span class="spec-label lang-pl">Trauma i PTSD</span><span class="spec-label lang-no" style="display:none">Traume og PTSD</span></div>
+      <div class="spec-item"><span class="spec-icon">👥</span><span class="spec-label lang-pl">Problemy w relacjach</span><span class="spec-label lang-no" style="display:none">Relasjonsproblemer</span></div>
+      <div class="spec-item"><span class="spec-icon">🌍</span><span class="spec-label lang-pl">Trudności emigracyjne</span><span class="spec-label lang-no" style="display:none">Emigrasjonsvansker</span></div>
+      <div class="spec-item"><span class="spec-icon">🔥</span><span class="spec-label lang-pl">Wypalenie zawodowe</span><span class="spec-label lang-no" style="display:none">Utbrenthet</span></div>
+      <div class="spec-item"><span class="spec-icon">😤</span><span class="spec-label lang-pl">Stres i napięcie</span><span class="spec-label lang-no" style="display:none">Stress og spenning</span></div>
+      <div class="spec-item"><span class="spec-icon">🌙</span><span class="spec-label lang-pl">Zaburzenia snu</span><span class="spec-label lang-no" style="display:none">Søvnforstyrrelser</span></div>
+      <div class="spec-item"><span class="spec-icon">💭</span><span class="spec-label lang-pl">Kryzys życiowy</span><span class="spec-label lang-no" style="display:none">Livskrise</span></div>
+      <div class="spec-item"><span class="spec-icon">🔗</span><span class="spec-label lang-pl">Uzależnienia</span><span class="spec-label lang-no" style="display:none">Avhengigheter</span></div>
+      <div class="spec-item"><span class="spec-icon">🧩</span><span class="spec-label lang-pl">Trudności adaptacyjne</span><span class="spec-label lang-no" style="display:none">Tilpasningsvansker</span></div>
+      <div class="spec-item"><span class="spec-icon">💪</span><span class="spec-label lang-pl">Pewność siebie</span><span class="spec-label lang-no" style="display:none">Selvtillit</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== CALENDAR ===== -->
+<section class="cal-sec" id="calendar">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="badge lang-pl">Wolne Terminy</div>
+      <div class="badge lang-no" style="display:none">Ledige timer</div>
+      <h2 class="lang-pl">Zarezerwuj wizytę</h2>
+      <h2 class="lang-no" style="display:none">Reserver en time</h2>
+      <p class="lang-pl">Wybierz termin – zielone dni mają dostępne godziny. Kliknij wybrany dzień, aby zobaczyć szczegóły.</p>
+      <p class="lang-no" style="display:none">Velg en dato – grønne dager har ledige timer. Klikk på en dag for å se detaljer.</p>
+    </div>
+    <div class="cal-wrap reveal">
+      <div class="cal">
+        <div class="cal-head">
+          <button class="cal-nav" id="calPrev">‹</button>
+          <span class="cal-month" id="calMonth"></span>
+          <button class="cal-nav" id="calNext">›</button>
+        </div>
+        <div class="cal-body">
+          <div class="cal-dl"   id="calDl"></div>
+          <div class="cal-grid" id="calGrid"></div>
+        </div>
+        <div class="cal-legend">
+          <div class="cal-legend-item"><div class="cal-legend-dot" style="background:var(--c-green)"></div><span class="lang-pl">Wolny termin</span><span class="lang-no" style="display:none">Ledig time</span></div>
+          <div class="cal-legend-item"><div class="cal-legend-dot" style="background:var(--c-border)"></div><span class="lang-pl">Brak miejsc</span><span class="lang-no" style="display:none">Ingen ledige</span></div>
+          <div class="cal-legend-item"><div class="cal-legend-dot" style="background:var(--c-primary)"></div><span class="lang-pl">Dzisiaj</span><span class="lang-no" style="display:none">I dag</span></div>
+        </div>
+      </div>
+      <div class="slots-panel" id="slotsPanel">
+        <h3 class="slots-title" id="slotsTitle"></h3>
+        <div class="slots-grid" id="slotsGrid"></div>
+        <a href="#contact" class="btn btn-primary" id="bookBtn" style="display:none">
+          <span class="lang-pl">Umów tę wizytę →</span>
+          <span class="lang-no" style="display:none">Reserver denne timen →</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== CONTACT ===== -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="badge lang-pl">Kontakt</div>
+      <div class="badge lang-no" style="display:none">Kontakt</div>
+      <h2 class="lang-pl">Skontaktuj się ze mną</h2>
+      <h2 class="lang-no" style="display:none">Ta kontakt med meg</h2>
+      <p class="lang-pl">Opisz sytuację w formularzu lub napisz bezpośrednio – odpiszę najszybciej, jak to możliwe.</p>
+      <p class="lang-no" style="display:none">Beskriv situasjonen i skjemaet eller skriv direkte – jeg svarer så raskt som mulig.</p>
+    </div>
+    <div class="contact__grid">
+      <div class="reveal-l">
+        <div class="info-item">
+          <div class="info-icon">📍</div>
+          <div>
+            <div class="info-lbl lang-pl">Lokalizacja</div>
+            <div class="info-lbl lang-no" style="display:none">Plassering</div>
+            <div class="info-val lang-pl">Kristiansand, Norwegia<br><small style="color:var(--c-text-light)">Konsultacje online w całej Norwegii</small></div>
+            <div class="info-val lang-no" style="display:none">Kristiansand, Norge<br><small style="color:var(--c-text-light)">Online konsultasjoner i hele Norge</small></div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">✉️</div>
+          <div>
+            <div class="info-lbl">Email</div>
+            <div class="info-val"><a href="mailto:joanna.pilarczyk@gmail.com">joanna.pilarczyk@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">📌</div>
+          <div>
+            <div class="info-lbl lang-pl">ZnanyLekarz.pl</div>
+            <div class="info-lbl lang-no" style="display:none">ZnanyLekarz.pl</div>
+            <div class="info-val"><a href="https://www.znanylekarz.pl/joanna-pilarczyk-3/psycholog-terapeuta-psychoterapeuta/szczecin" target="_blank" rel="noopener" style="color:var(--c-primary)">Profil na ZnanyLekarz →</a></div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🕐</div>
+          <div>
+            <div class="info-lbl lang-pl">Dostępność online</div>
+            <div class="info-lbl lang-no" style="display:none">Online tilgjengelighet</div>
+            <div class="info-val lang-pl">Pon–Pt: 9:00–20:00<br>Sob: 10:00–15:00</div>
+            <div class="info-val lang-no" style="display:none">Man–Fre: 9:00–20:00<br>Lør: 10:00–15:00</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal-r">
+        <div class="form-wrap">
+          <form id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-lbl lang-pl" for="fname">Imię i Nazwisko *</label>
+                <label class="form-lbl lang-no" for="fname" style="display:none">Navn *</label>
+                <input type="text" class="form-ctrl" id="fname" required placeholder="Anna Kowalska">
+              </div>
+              <div class="form-group">
+                <label class="form-lbl lang-pl" for="femail">Email *</label>
+                <label class="form-lbl lang-no" for="femail" style="display:none">E-post *</label>
+                <input type="email" class="form-ctrl" id="femail" required placeholder="anna@example.com">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-lbl lang-pl" for="fphone">Telefon</label>
+                <label class="form-lbl lang-no" for="fphone" style="display:none">Telefon</label>
+                <input type="tel" class="form-ctrl" id="fphone" placeholder="+47 …">
+              </div>
+              <div class="form-group">
+                <label class="form-lbl lang-pl" for="fservice">Rodzaj usługi</label>
+                <label class="form-lbl lang-no" for="fservice" style="display:none">Type tjeneste</label>
+                <select class="form-ctrl" id="fservice">
+                  <option value="kon">Pierwsza konsultacja</option>
+                  <option value="ind">Psychoterapia indywidualna</option>
+                  <option value="par">Psychoterapia par</option>
+                  <option value="rod">Psychoterapia rodzinna</option>
+                  <option value="onl">Psychoterapia online</option>
+                  <option value="kry">Interwencja kryzysowa</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-lbl lang-pl" for="fmsg">Wiadomość *</label>
+              <label class="form-lbl lang-no" for="fmsg" style="display:none">Melding *</label>
+              <textarea class="form-ctrl" id="fmsg" rows="5" required placeholder="Opisz krótko swoją sytuację lub zaproponuj preferowany termin..."></textarea>
+            </div>
+            <div class="form-check">
+              <input type="checkbox" id="frodo" required>
+              <label for="frodo" class="lang-pl">Wyrażam zgodę na przetwarzanie moich danych osobowych w celu udzielenia odpowiedzi na moje zapytanie. <a href="#">Polityka prywatności</a> *</label>
+              <label for="frodo" class="lang-no" style="display:none">Jeg samtykker til behandling av mine personopplysninger for å besvare min henvendelse. <a href="#">Personvernerklæring</a> *</label>
+            </div>
+            <button type="submit" class="btn btn-primary" id="submitBtn" style="width:100%;justify-content:center">
+              <span class="lang-pl">Wyślij wiadomość ✉️</span>
+              <span class="lang-no" style="display:none">Send melding ✉️</span>
+            </button>
+          </form>
+          <div class="form-success" id="formSuccess">
+            <span class="lang-pl">✅ Dziękuję! Odezwę się najszybciej jak to możliwe.</span>
+            <span class="lang-no" style="display:none">✅ Takk! Jeg tar kontakt så snart som mulig.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-name">Joanna Pilarczyk</div>
+        <div class="footer-role lang-pl">Psycholog / Psychoterapeuta · Kristiansand, Norge</div>
+        <div class="footer-role lang-no" style="display:none">Psykolog / Psykoterapeut · Kristiansand, Norge</div>
+        <p class="footer-desc lang-pl">Pomoc i wsparcie dla Polaków w Norwegii. Psychoterapia indywidualna, par i rodzin. Konsultacje online w języku polskim i angielskim.</p>
+        <p class="footer-desc lang-no" style="display:none">Hjelp og støtte til polakker i Norge. Individuell psykoterapi, par og familier. Online konsultasjoner på polsk og engelsk.</p>
+        <div class="socials">
+          <a href="https://www.facebook.com/joanna.pilarczyk.psycholog.psychoterapeuta" target="_blank" rel="noopener" class="social-btn" title="Facebook">fb</a>
+          <a href="https://no.linkedin.com/in/joanna-pilarczyk-894809135" target="_blank" rel="noopener" class="social-btn" title="LinkedIn">in</a>
+          <a href="https://www.znanylekarz.pl/joanna-pilarczyk-3/psycholog-terapeuta-psychoterapeuta/szczecin" target="_blank" rel="noopener" class="social-btn" title="ZnanyLekarz" style="font-size:.6rem">ZL</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-heading lang-pl">Nawigacja</div>
+        <div class="footer-heading lang-no" style="display:none">Navigasjon</div>
+        <ul class="footer-links">
+          <li><a href="#about"    class="lang-pl">O mnie</a>            <a href="#about"    class="lang-no" style="display:none">Om meg</a></li>
+          <li><a href="#services" class="lang-pl">Usługi</a>            <a href="#services" class="lang-no" style="display:none">Tjenester</a></li>
+          <li><a href="#gallery"  class="lang-pl">Galeria</a>           <a href="#gallery"  class="lang-no" style="display:none">Galleri</a></li>
+          <li><a href="#calendar" class="lang-pl">Wolne terminy</a>     <a href="#calendar" class="lang-no" style="display:none">Ledige timer</a></li>
+          <li><a href="#contact"  class="lang-pl">Kontakt</a>           <a href="#contact"  class="lang-no" style="display:none">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading lang-pl">Kontakt</div>
+        <div class="footer-heading lang-no" style="display:none">Kontakt</div>
+        <ul class="footer-links">
+          <li><a href="mailto:joanna.pilarczyk@gmail.com">joanna.pilarczyk@gmail.com</a></li>
+          <li class="lang-pl">Kristiansand, Norwegia</li>
+          <li class="lang-no" style="display:none">Kristiansand, Norge</li>
+          <li><a href="https://www.facebook.com/joanna.pilarczyk.psycholog.psychoterapeuta" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://no.linkedin.com/in/joanna-pilarczyk-894809135" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="#" class="lang-pl">Polityka prywatności</a><a href="#" class="lang-no" style="display:none">Personvern</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="lang-pl">© 2026 Joanna Pilarczyk – Psycholog / Psychoterapeuta. Wszelkie prawa zastrzeżone.</span>
+      <span class="lang-no" style="display:none">© 2026 Joanna Pilarczyk – Psykolog / Psykoterapeut. Alle rettigheter forbeholdt.</span>
+      <span style="color:rgba(255,255,255,.25);font-size:.72rem">Kristiansand, Norge</span>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+'use strict';
+
+/* --- LANGUAGE SWITCHER --- */
+let lang = 'pl';
+const SVC_OPTS = [
+  { pl:'Pierwsza konsultacja',                no:'Første konsultasjon' },
+  { pl:'Psychoterapia indywidualna',          no:'Individuell psykoterapi' },
+  { pl:'Psychoterapia par',                   no:'Parpsykoterapi' },
+  { pl:'Psychoterapia rodzinna',              no:'Familiepsykoterapi' },
+  { pl:'Psychoterapia online',                no:'Online psykoterapi' },
+  { pl:'Interwencja kryzysowa',               no:'Krisehjelp' },
+];
+
+function setLang(l) {
+  lang = l;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === l));
+  document.querySelectorAll('.lang-pl').forEach(e => e.style.display = l === 'pl' ? '' : 'none');
+  document.querySelectorAll('.lang-no').forEach(e => e.style.display = l === 'no' ? '' : 'none');
+  document.documentElement.lang = l;
+  const sel = document.getElementById('fservice');
+  [...sel.options].forEach((o, i) => { if (SVC_OPTS[i]) o.text = SVC_OPTS[i][l]; });
+  renderCal();
+}
+document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+
+/* --- NAV --- */
+const navEl = document.getElementById('nav');
+window.addEventListener('scroll', () => navEl.classList.toggle('scrolled', scrollY > 55), { passive: true });
+
+const ham = document.getElementById('hamburger');
+const mob = document.getElementById('mobNav');
+ham.addEventListener('click', () => { ham.classList.toggle('open'); mob.classList.toggle('open'); });
+function closeMob() { ham.classList.remove('open'); mob.classList.remove('open'); }
+
+const allSecs = [...document.querySelectorAll('section[id]')];
+window.addEventListener('scroll', () => {
+  const y = scrollY + 120;
+  allSecs.forEach(s => {
+    document.querySelectorAll(`.nav__links a[href="#${s.id}"]`).forEach(a =>
+      a.classList.toggle('active', y >= s.offsetTop && y < s.offsetTop + s.offsetHeight)
+    );
+  });
+}, { passive: true });
+
+/* --- SCROLL REVEAL --- */
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const d = parseFloat(e.target.dataset.d || 0);
+      setTimeout(() => e.target.classList.add('vis'), d * 130);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal, .reveal-l, .reveal-r').forEach((el, i) => { el.dataset.d = i % 5; ro.observe(el); });
+
+/* --- PARTICLES --- */
+const pCont = document.getElementById('particles');
+for (let i = 0; i < 28; i++) {
+  const p = document.createElement('div');
+  p.className = 'particle';
+  const sz = Math.random() * 4 + 2;
+  p.style.cssText = `left:${Math.random()*100}%;width:${sz}px;height:${sz}px;animation-duration:${Math.random()*14+10}s;animation-delay:${Math.random()*14}s`;
+  pCont.appendChild(p);
+}
+
+/* --- CALENDAR --- */
+const MN_PL = ['Styczeń','Luty','Marzec','Kwiecień','Maj','Czerwiec','Lipiec','Sierpień','Wrzesień','Październik','Listopad','Grudzień'];
+const MN_NO = ['Januar','Februar','Mars','April','Mai','Juni','Juli','August','September','Oktober','November','Desember'];
+const DN_PL = ['Pon','Wt','Śr','Czw','Pt','Sob','Nie'];
+const DN_NO = ['Man','Tir','Ons','Tor','Fre','Lør','Søn'];
+
+const AVAIL = {
+  '2026-4': [7,8,10,14,15,17,21,22,24,28,29],
+  '2026-5': [4,5,7,11,12,14,18,19,21,25,26,28],
+  '2026-6': [1,2,4,8,9,11,15,16,18,22,23,25,29,30],
+};
+const BOOKED_SLOTS = ['9:50','14:50','16:30','10:40'];
+const ALL_SLOTS    = ['9:00','9:50','10:40','11:30','14:00','14:50','15:40','16:30','17:20','18:10','19:00'];
+
+let calY = 2026, calM = 3, selDay = null;
+
+function renderCal() {
+  const MN = lang === 'pl' ? MN_PL : MN_NO;
+  const DN = lang === 'pl' ? DN_PL : DN_NO;
+  const today = new Date();
+
+  document.getElementById('calMonth').textContent = `${MN[calM]} ${calY}`;
+  document.getElementById('calDl').innerHTML = DN.map(d => `<div class="cal-dl-cell">${d}</div>`).join('');
+
+  const grid = document.getElementById('calGrid');
+  grid.innerHTML = '';
+  const firstDow = new Date(calY, calM, 1).getDay();
+  const offset   = firstDow === 0 ? 6 : firstDow - 1;
+  const days     = new Date(calY, calM + 1, 0).getDate();
+  const key      = `${calY}-${calM + 1}`;
+  const avail    = AVAIL[key] || [];
+
+  for (let i = 0; i < offset; i++) grid.innerHTML += '<div class="cal-day empty"></div>';
+
+  for (let d = 1; d <= days; d++) {
+    const dt      = new Date(calY, calM, d);
+    const todayDt = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    const isPast  = dt < todayDt;
+    const isToday = d === today.getDate() && calM === today.getMonth() && calY === today.getFullYear();
+    const isAvail = avail.includes(d) && !isPast && dt.getDay() !== 0;
+    const isSel   = selDay === d;
+    let cls = 'cal-day' + (isPast || dt.getDay()===0 ? ' past' : isToday ? ' today' : isAvail ? ' avail' : ' busy');
+    if (isSel) cls += ' sel';
+    const dot = (isAvail || isSel) ? '<span class="cal-dot"></span>' : '';
+    grid.innerHTML += `<div class="${cls}" data-d="${d}">${d}${dot}</div>`;
+  }
+
+  grid.querySelectorAll('.cal-day.avail').forEach(el => {
+    el.addEventListener('click', () => { selDay = parseInt(el.dataset.d); renderCal(); showSlots(selDay); });
+  });
+}
+
+function showSlots(d) {
+  const MN    = lang === 'pl' ? MN_PL : MN_NO;
+  const panel = document.getElementById('slotsPanel');
+  const grid  = document.getElementById('slotsGrid');
+  const btn   = document.getElementById('bookBtn');
+  document.getElementById('slotsTitle').textContent = lang === 'pl'
+    ? `Dostępne godziny – ${d} ${MN[calM]} ${calY}`
+    : `Tilgjengelige timer – ${d}. ${MN[calM]} ${calY}`;
+  grid.innerHTML = ALL_SLOTS.map(s => {
+    const bk = BOOKED_SLOTS.includes(s);
+    return `<button class="slot${bk ? ' booked' : ''}" ${bk ? 'disabled' : ''} data-t="${s}">${s}</button>`;
+  }).join('');
+  btn.style.display = 'none';
+  grid.querySelectorAll('.slot:not(.booked)').forEach(sl => {
+    sl.addEventListener('click', () => {
+      grid.querySelectorAll('.slot').forEach(x => x.classList.remove('sel'));
+      sl.classList.add('sel');
+      btn.style.display = 'inline-flex';
+    });
+  });
+  panel.classList.add('vis');
+  setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+}
+
+document.getElementById('calPrev').addEventListener('click', () => {
+  calM--; if (calM < 0) { calM = 11; calY--; }
+  selDay = null; document.getElementById('slotsPanel').classList.remove('vis'); renderCal();
+});
+document.getElementById('calNext').addEventListener('click', () => {
+  calM++; if (calM > 11) { calM = 0; calY++; }
+  selDay = null; document.getElementById('slotsPanel').classList.remove('vis'); renderCal();
+});
+renderCal();
+
+/* --- CONTACT FORM --- */
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  let ok = true;
+  ['fname','femail','fmsg'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el.value.trim()) { el.classList.add('err'); ok = false; }
+    else el.classList.remove('err');
+  });
+  if (!document.getElementById('frodo').checked) ok = false;
+  if (!ok) return;
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.innerHTML = lang === 'pl' ? '⏳ Wysyłanie…' : '⏳ Sender…';
+  setTimeout(() => {
+    this.style.display = 'none';
+    const s = document.getElementById('formSuccess');
+    s.style.display = 'block';
+    s.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, 1500);
+});
+document.querySelectorAll('.form-ctrl').forEach(el => el.addEventListener('input', () => el.classList.remove('err')));
+
+/* --- COUNTER ANIMATION --- */
+function animCount(el, target, dur = 1800) {
+  const step = target / (dur / 16);
+  let cur = 0;
+  const iv = setInterval(() => {
+    cur = Math.min(cur + step, target);
+    el.textContent = Math.floor(cur) + '+';
+    if (cur >= target) clearInterval(iv);
+  }, 16);
+}
+const statsObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.querySelectorAll('.stat-n[data-target]').forEach(el => animCount(el, parseInt(el.dataset.target)));
+    statsObs.unobserve(e.target);
+  });
+}, { threshold: .6 });
+const statsEl = document.querySelector('.hero__stats');
+if (statsEl) statsObs.observe(statsEl);
+</script>
+</body>
+</html>
